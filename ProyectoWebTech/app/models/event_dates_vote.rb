@@ -1,0 +1,2 @@
+class EventDatesVote < ApplicationRecord
+end

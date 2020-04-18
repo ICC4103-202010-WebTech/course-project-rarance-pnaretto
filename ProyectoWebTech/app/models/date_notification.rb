@@ -1,0 +1,2 @@
+class DateNotification < ApplicationRecord
+end

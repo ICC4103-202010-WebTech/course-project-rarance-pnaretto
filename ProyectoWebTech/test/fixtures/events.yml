@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  ubication: MyString
+  description: MyText
+  bannerPhoto: MyString
+  public: 
+  decition: MyString
+  min_vote: 1
+  start_voting: 2020-04-18 03:35:32
+  finish_voting: 2020-04-18 03:35:32
+
+two:
+  title: MyString
+  ubication: MyString
+  description: MyText
+  bannerPhoto: MyString
+  public: 
+  decition: MyString
+  min_vote: 1
+  start_voting: 2020-04-18 03:35:32
+  finish_voting: 2020-04-18 03:35:32

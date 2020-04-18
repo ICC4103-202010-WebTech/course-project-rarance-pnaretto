@@ -1,0 +1,2 @@
+class OrganizationFileReport < ApplicationRecord
+end
