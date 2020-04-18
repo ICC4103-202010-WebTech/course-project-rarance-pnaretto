@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 2020_04_18_091857) do
     t.string "bannerPhoto"
     t.boolean "public"
     t.string "decition"
+    t.integer "user_id"
     t.integer "min_vote"
     t.datetime "start_voting"
     t.datetime "finish_voting"
