@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 2020_04_18_091857) do
     t.datetime "finish_voting"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
