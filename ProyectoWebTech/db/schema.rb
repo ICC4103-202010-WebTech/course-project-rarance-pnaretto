@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_18_091857) do
+ActiveRecord::Schema.define(version: 2020_04_19_044343) do
 
   create_table "comment_comment_reports", force: :cascade do |t|
     t.text "message"
@@ -87,12 +87,12 @@ ActiveRecord::Schema.define(version: 2020_04_18_091857) do
     t.string "bannerPhoto"
     t.boolean "public"
     t.string "decition"
-    t.integer "user_id"
     t.integer "min_vote"
     t.datetime "start_voting"
     t.datetime "finish_voting"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
@@ -151,4 +151,5 @@ ActiveRecord::Schema.define(version: 2020_04_18_091857) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "events", "users"
 end
