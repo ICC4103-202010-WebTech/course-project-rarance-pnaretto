@@ -6,4 +6,5 @@ class Event < ApplicationRecord
   has_many :event_reports
   has_many :event_comments
   has_many :event_files
+  has_many :organization_event
 end
