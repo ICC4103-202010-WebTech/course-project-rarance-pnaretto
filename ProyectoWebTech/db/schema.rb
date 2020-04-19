@@ -10,12 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_19_044343) do
+ActiveRecord::Schema.define(version: 2020_04_19_063326) do
 
   create_table "comment_comment_reports", force: :cascade do |t|
     t.text "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "comment_comment_id"
+    t.index ["comment_comment_id"], name: "index_comment_comment_reports_on_comment_comment_id"
+    t.index ["user_id"], name: "index_comment_comment_reports_on_user_id"
   end
 
   create_table "comment_comments", force: :cascade do |t|
@@ -23,6 +27,10 @@ ActiveRecord::Schema.define(version: 2020_04_19_044343) do
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "event_comment_id"
+    t.integer "user_id"
+    t.index ["event_comment_id"], name: "index_comment_comments_on_event_comment_id"
+    t.index ["user_id"], name: "index_comment_comments_on_user_id"
   end
 
   create_table "comment_reports", force: :cascade do |t|
@@ -34,6 +42,17 @@ ActiveRecord::Schema.define(version: 2020_04_19_044343) do
   create_table "date_notifications", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "event_id"
+    t.index ["event_id"], name: "index_date_notifications_on_event_id"
+    t.index ["user_id"], name: "index_date_notifications_on_user_id"
+  end
+
+  create_table "event_comment_reports", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "event_comment_id"
+    t.index ["event_comment_id"], name: "index_event_comment_reports_on_event_comment_id"
+    t.index ["user_id"], name: "index_event_comment_reports_on_user_id"
   end
 
   create_table "event_comments", force: :cascade do |t|
@@ -41,6 +60,19 @@ ActiveRecord::Schema.define(version: 2020_04_19_044343) do
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "event_id"
+    t.integer "user_id"
+    t.index ["event_id"], name: "index_event_comments_on_event_id"
+    t.index ["user_id"], name: "index_event_comments_on_user_id"
+  end
+
+  create_table "event_date_votes", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "event_date_id"
+    t.integer "user_id"
+    t.index ["event_date_id"], name: "index_event_date_votes_on_event_date_id"
+    t.index ["user_id"], name: "index_event_date_votes_on_user_id"
   end
 
   create_table "event_dates", force: :cascade do |t|
@@ -48,23 +80,26 @@ ActiveRecord::Schema.define(version: 2020_04_19_044343) do
     t.string "datetime"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "event_dates_votes", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.integer "event_id"
+    t.index ["event_id"], name: "index_event_dates_on_event_id"
   end
 
   create_table "event_file_reports", force: :cascade do |t|
     t.text "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "event_file_id"
+    t.index ["event_file_id"], name: "index_event_file_reports_on_event_file_id"
+    t.index ["user_id"], name: "index_event_file_reports_on_user_id"
   end
 
   create_table "event_files", force: :cascade do |t|
     t.string "file_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "event_id"
+    t.index ["event_id"], name: "index_event_files_on_event_id"
   end
 
   create_table "event_invitations", force: :cascade do |t|
@@ -72,12 +107,20 @@ ActiveRecord::Schema.define(version: 2020_04_19_044343) do
     t.string "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "event_id"
+    t.index ["event_id"], name: "index_event_invitations_on_event_id"
+    t.index ["user_id"], name: "index_event_invitations_on_user_id"
   end
 
   create_table "event_reports", force: :cascade do |t|
     t.text "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "event_id"
+    t.index ["event_id"], name: "index_event_reports_on_event_id"
+    t.index ["user_id"], name: "index_event_reports_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -151,5 +194,25 @@ ActiveRecord::Schema.define(version: 2020_04_19_044343) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "comment_comment_reports", "comment_comments"
+  add_foreign_key "comment_comment_reports", "users"
+  add_foreign_key "comment_comments", "event_comments"
+  add_foreign_key "comment_comments", "users"
+  add_foreign_key "date_notifications", "events"
+  add_foreign_key "date_notifications", "users"
+  add_foreign_key "event_comment_reports", "event_comments"
+  add_foreign_key "event_comment_reports", "users"
+  add_foreign_key "event_comments", "events"
+  add_foreign_key "event_comments", "users"
+  add_foreign_key "event_date_votes", "event_dates"
+  add_foreign_key "event_date_votes", "users"
+  add_foreign_key "event_dates", "events"
+  add_foreign_key "event_file_reports", "event_files"
+  add_foreign_key "event_file_reports", "users"
+  add_foreign_key "event_files", "events"
+  add_foreign_key "event_invitations", "events"
+  add_foreign_key "event_invitations", "users"
+  add_foreign_key "event_reports", "events"
+  add_foreign_key "event_reports", "users"
   add_foreign_key "events", "users"
 end
