@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_19_075747) do
+ActiveRecord::Schema.define(version: 2020_04_19_082718) do
 
   create_table "comment_comment_reports", force: :cascade do |t|
     t.text "message"
@@ -31,12 +31,6 @@ ActiveRecord::Schema.define(version: 2020_04_19_075747) do
     t.integer "user_id"
     t.index ["event_comment_id"], name: "index_comment_comments_on_event_comment_id"
     t.index ["user_id"], name: "index_comment_comments_on_user_id"
-  end
-
-  create_table "comment_reports", force: :cascade do |t|
-    t.text "message"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "date_notifications", force: :cascade do |t|
@@ -76,8 +70,7 @@ ActiveRecord::Schema.define(version: 2020_04_19_075747) do
   end
 
   create_table "event_dates", force: :cascade do |t|
-    t.string "date"
-    t.string "datetime"
+    t.datetime "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "event_id"

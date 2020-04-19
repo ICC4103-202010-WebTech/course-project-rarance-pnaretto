@@ -1,2 +1,0 @@
-class CommentReport < ApplicationRecord
-end
