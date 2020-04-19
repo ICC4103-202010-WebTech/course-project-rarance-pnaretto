@@ -13,4 +13,10 @@ class User < ApplicationRecord
   has_many :organization_reports
   has_many :organization_members
   has_many :organization_file_reports
+
+  validates :email, :name, :password, presence: true
+  validates :email, uniqueness: true
+  #https://github.com/micke/valid_email2
+  validates :email,'valid_email_2/email': true
+
 end
