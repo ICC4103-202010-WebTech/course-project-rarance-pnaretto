@@ -18,5 +18,5 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   #https://github.com/micke/valid_email2
   validates :email,'valid_email_2/email': true
-  
+
 end
