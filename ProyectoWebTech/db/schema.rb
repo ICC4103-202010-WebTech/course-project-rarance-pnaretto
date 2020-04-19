@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_19_063326) do
+ActiveRecord::Schema.define(version: 2020_04_19_075747) do
 
   create_table "comment_comment_reports", force: :cascade do |t|
     t.text "message"
@@ -149,23 +149,37 @@ ActiveRecord::Schema.define(version: 2020_04_19_063326) do
     t.text "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "organization_file_id"
+    t.integer "user_id"
+    t.index ["organization_file_id"], name: "index_organization_file_reports_on_organization_file_id"
+    t.index ["user_id"], name: "index_organization_file_reports_on_user_id"
   end
 
   create_table "organization_files", force: :cascade do |t|
     t.string "file_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "organization_id"
+    t.index ["organization_id"], name: "index_organization_files_on_organization_id"
   end
 
   create_table "organization_members", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "organization_id"
+    t.index ["organization_id"], name: "index_organization_members_on_organization_id"
+    t.index ["user_id"], name: "index_organization_members_on_user_id"
   end
 
   create_table "organization_reports", force: :cascade do |t|
     t.text "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "organization_id"
+    t.integer "user_id"
+    t.index ["organization_id"], name: "index_organization_reports_on_organization_id"
+    t.index ["user_id"], name: "index_organization_reports_on_user_id"
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -174,6 +188,8 @@ ActiveRecord::Schema.define(version: 2020_04_19_063326) do
     t.string "banner_photo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_organizations_on_user_id"
   end
 
   create_table "user_reports", force: :cascade do |t|
@@ -215,4 +231,12 @@ ActiveRecord::Schema.define(version: 2020_04_19_063326) do
   add_foreign_key "event_reports", "events"
   add_foreign_key "event_reports", "users"
   add_foreign_key "events", "users"
+  add_foreign_key "organization_file_reports", "organization_files"
+  add_foreign_key "organization_file_reports", "users"
+  add_foreign_key "organization_files", "organizations"
+  add_foreign_key "organization_members", "organizations"
+  add_foreign_key "organization_members", "users"
+  add_foreign_key "organization_reports", "organizations"
+  add_foreign_key "organization_reports", "users"
+  add_foreign_key "organizations", "users"
 end
