@@ -54,7 +54,7 @@ ec2=EventComment.create(message:"WaaaaaahhhH(meaning OK)", user:u4, event:e1)
 ec3=EventComment.create(message:"WaaaaaahhhH(in a racist tone)", user:u4, event:e2)
 ec4=EventComment.create(message:"WaaaaaahhhH(I love fire)", user:u4, event:e3)
 ec5=EventComment.create(message:"Itssss eMEEEee Mariooo", user:u1, event:e1)
-ec6=EventComment.create(message:"Luigi noises", user:u1, event:e1)
+ec6=EventComment.create(message:"Luigi noises", user:u2, event:e1)
 
 oe1=OrganizationEvent.create(event:e1,organization:o1, public:true)
 oe2=OrganizationEvent.create(event:e1,organization:o2, public:false)
