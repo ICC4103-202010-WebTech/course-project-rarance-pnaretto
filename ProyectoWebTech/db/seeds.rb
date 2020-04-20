@@ -59,7 +59,7 @@ ec6=EventComment.create(message:"Luigi noises", user:u2, event:e1)
 oe1=OrganizationEvent.create(event:e1,organization:o1, public:true)
 oe2=OrganizationEvent.create(event:e1,organization:o2, public:false)
 oe3=OrganizationEvent.create(event:e2,organization:o1, public:true)
-oe4=OrganizationEvent.create(event:e3,organization:o1, public:false)
+oe4=OrganizationEvent.create(event:e3,organization:o2, public:false)
 
 
 

@@ -69,7 +69,7 @@ namespace :db do
     o=Organization.where(name: orga)
     o1=Organization.find(o.ids)
     o2=Organization.find(nume)
-    puts("\rLooking for all the public events that belongs to: "+orga)
+    puts("\rLooking for all the non public events that belongs to: "+orga)
     puts("Event name || ID")
     result1=OrganizationEvent.where(public:false, organization_id:o1[0].id)
     for e in result1
@@ -78,7 +78,7 @@ namespace :db do
     if result1.length==0
       puts("none")
     end
-    puts("\rLooking for all the public events that belongs to the organization ID: "+String(nume)+". Its organization name is: "+o2.name)
+    puts("\rLooking for all the non public events that belongs to the organization ID: "+String(nume)+". Its organization name is: "+o2.name)
     puts("Event name || ID")
     result2=OrganizationEvent.where(public:false, organization_id:o2.id)
     for e in result2
@@ -91,7 +91,7 @@ namespace :db do
     puts("\r")
 
 
-    puts("Query 5: Event with more attendance of females.")
+    puts("Query 5: Users invited to an event.")
     eve="Save Peach"#if you want to see other Event by its name change it here
     nume= 3#if you want to see other Event by its ID change it here
     e=Event.where(title: eve)
@@ -129,6 +129,8 @@ namespace :db do
     for er in result
       puts(String(er.user_id)+" || "+User.find(er.user_id).name)
     end
+    puts("EOQ") # End Of Query -- always add this line after a query.
+    puts("\r")
 
     puts("Query 7: All comments made in a certain event.")
     eve="Save Peach"#if you want to see other Event by its name change it here
@@ -194,7 +196,6 @@ namespace :db do
     u2=User.find(o2.user_id)
     puts("The User with admin priviliges in the organization: "+orga+", is the user: "+u1.name+", with user ID: "+String(u1.id))
     puts("The User with admin priviliges in the organization ID: "+String(nume)+", which is the organization "+o2.name+", is the user: "+u2.name+", with user ID: "+String(u2.id))
-    puts("Looking for all the comments made by: "+usess)
     puts("EOQ") # End Of Query -- always add this line after a query.
     puts("\r")
 
