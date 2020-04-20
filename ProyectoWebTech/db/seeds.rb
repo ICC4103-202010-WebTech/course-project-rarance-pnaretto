@@ -57,7 +57,7 @@ ec5=EventComment.create(message:"Itssss eMEEEee Mariooo", user:u1, event:e1)
 ec6=EventComment.create(message:"Luigi noises", user:u2, event:e1)
 
 oe1=OrganizationEvent.create(event:e1,organization:o1, public:true)
-oe2=OrganizationEvent.create(event:e1,organization:o2, public:false)
+oe2=OrganizationEvent.create(event:e1,organization:o2, public:false)#this was made by waluigi in an attemp to boicot poor Mario
 oe3=OrganizationEvent.create(event:e2,organization:o1, public:true)
 oe4=OrganizationEvent.create(event:e3,organization:o2, public:false)
 
