@@ -4,25 +4,25 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
-      resources :user do
+      resources :users do
         resources :messages, shallow:true
         resources :user_reports, shallow: true
         resources :events, shallow: true do
           resources :event_comments, shallow: true do
             resources :comment_comments, shallow: true do
-              resurces :comment_comment_reports, shallow: true
+              resources :comment_comment_reports, shallow: true
             end
             resources :event_comment_resports, shallow: true
           end
           resources :event_files, shallow: true do
-            resources :event_files_report, shallow: true
+            resources :event_files_reports, shallow: true
           end
-          resources event_dates, shallow:true do
-            resources event_date_votes, shallow: true
+          resources :event_dates, shallow:true do
+            resources :event_date_votes, shallow: true
           end
-          resources date_notification, shallow:true
-          resources event_invitations, shallow: true
-          resources event_reports, shallow: true
+          resources :date_notification, shallow:true
+          resources :event_invitations, shallow: true
+          resources :event_reports, shallow: true
         end
         resources :organizations, shallow: true do
           resources :orfanization_members, shallow: true
@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   resources :events, defaults: { format: :html }
   resources :event_comments, defaults: { format: :html }
   resources :event_comment_reports, defaults: { format: :html }
-  resources :event_date, defaults: { format: :html }
+  resources :event_dates, defaults: { format: :html }
   resources :event_date_votes, defaults: { format: :html }
   resources :event_files, defaults: { format: :html }
   resources :event_file_reports, defaults: { format: :html }
