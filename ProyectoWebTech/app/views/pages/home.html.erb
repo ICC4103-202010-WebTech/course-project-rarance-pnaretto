@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<h2>Welcome to THE EVENTBOOK</h2>
+<hr>
+<h3>Upcoming events!!!</h3>
 <table>
   <tbody>
   <tr>
@@ -13,12 +14,13 @@
       Owner
     </th>
   </tr>
-  <% @user.event_invitations.each  do |v| %>
+  <% @user_events.each  do |v| %>
     <tr>
-      <td><%= v.message %></td>
-      <td><%= v.event.title %></td>
-      <td><%= v.event.user.name %></td>
+      <td><%= v.title %></td>
+      <td><%= v.ubication %></td>
+      <td><%= v.user.name %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
+<hr>

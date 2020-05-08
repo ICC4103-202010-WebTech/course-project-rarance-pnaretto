@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   def home
     @user = User.first
-      #@user_events = (Event.joins(:users).where(event:{user_id: user.id}).group(:name)).joins(:event_invitations).where(event_invitations:{user_id: 1}).group(:name)
+    @user_events = Event.joins(:event_invitations).where(event_invitations:{user_id: @user.id})
+    #@user_events = (Event.joins(:event_invitations).where(event_invitations:{user_id: @user.id})).joins(:users).where(users:(id: :user_id))
   end
 end
