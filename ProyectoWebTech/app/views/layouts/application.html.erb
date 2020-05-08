@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ProyectoWebTech</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<header>
+  <h1>
+    <td><%= link_to 'THE EVENTBOOK', root_path %></td>
+  </h1>
+</header>
+<nav id="navbar">
+  <ul>
+    <li><%= link_to 'Profile', users_path %></li>
+    <li><%= link_to 'Events', events_path %></li>
+    <li><%= link_to 'Organizations', organizations_path %></li>
+  </ul>
+</nav>
 
   <body>
     <%= yield %>

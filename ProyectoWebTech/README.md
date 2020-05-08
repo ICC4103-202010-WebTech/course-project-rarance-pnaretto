@@ -4,7 +4,7 @@
 
 `_rake db:reset_`
 `_rake db:migrate_`
-`_rake db:model_queries_`
+`_```rake db:model_queries```_`
 
 `For the validations might be needed to insall a gem, for this might be needed to run bundle install`
 
