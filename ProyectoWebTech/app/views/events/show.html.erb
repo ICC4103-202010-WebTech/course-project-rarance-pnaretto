@@ -1,5 +1,41 @@
 <p id="notice"><%= notice %></p>
 
+<hr>
+<h1><%=@event.title %></h1>
+<table>
+  <tbody>
+  <tr>
+    <th>
+      Ubication
+    </th>
+    <th>
+      Owner
+    </th>
+    <th>
+      Description
+    </th>
+    <th>
+      Public
+    </th>
+    <th>
+      Banner public
+    </th>
+    <th>
+      Decition
+    </th>
+  </tr>
+    <tr>
+      <td><%= @event.ubication %></td>
+      <td><%= @event.user.name %></td>
+      <td><%= @event.description %></td>
+      <td><%= @event.public %></td>
+      <td><%= @event.bannerPhoto %></td>
+      <td><%= @event.decition %></td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
 
