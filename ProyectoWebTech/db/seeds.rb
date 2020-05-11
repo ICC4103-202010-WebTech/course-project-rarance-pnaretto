@@ -56,10 +56,30 @@ ec4=EventComment.create(message:"WaaaaaahhhH(I love fire)", user:u4, event:e3)
 ec5=EventComment.create(message:"Itssss eMEEEee Mariooo", user:u1, event:e1)
 ec6=EventComment.create(message:"Luigi noises", user:u2, event:e1)
 
+cc1=CommentComment.create(message:"Wahoo", event_comment:ec1, user:u1)
+cc2=CommentComment.create(message:"Wahhh", event_comment:ec1, user:u4)
+cc3=CommentComment.create(message:"What is this?", event_comment:ec1, user:u3)
+cc4=CommentComment.create(message:"[Italian noises]", event_comment:ec1, user:u1)
+cc5=CommentComment.create(message:"Yahooo", event_comment:ec1, user:u1)
+
+cc6=CommentComment.create(message:"Wahoo", event_comment:ec2, user:u1)
+cc7=CommentComment.create(message:"Wahhh", event_comment:ec2, user:u4)
+cc8=CommentComment.create(message:"What is this?", event_comment:ec2, user:u3)
+cc9=CommentComment.create(message:"[Italian noises]", event_comment:ec2, user:u1)
+cc10=CommentComment.create(message:"Yahooo", event_comment:ec2, user:u1)
+
+cr1= CommentCommentReport.create(message:"I didn't like what he said", user:u4, comment_comment: cc9)
+cr2= CommentCommentReport.create(message:"I didn't like what he said", user:u4, comment_comment: cc4)
+cr3= CommentCommentReport.create(message:"I think this is offensive", user:u1, comment_comment: cc2)
+
 oe1=OrganizationEvent.create(event:e1,organization:o1, public:true)
 oe2=OrganizationEvent.create(event:e1,organization:o2, public:false)#this was made by waluigi in an attemp to boicot poor Mario
 oe3=OrganizationEvent.create(event:e2,organization:o1, public:true)
 oe4=OrganizationEvent.create(event:e3,organization:o2, public:false)
+
+or1= OrganizationReport.create(message:"This Organization affects me personally", organization:o1, user:u4)
+or2= OrganizationReport.create(message:"This Organization is no longer active (WAHH)", organization:o2, user:u4)
+
 
 
 

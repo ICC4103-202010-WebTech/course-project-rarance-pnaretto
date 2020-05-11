@@ -35,7 +35,7 @@ Rails.application.routes.draw do
       end
     end
   end
-
+  resources :admin, defaults: { format: :html }
   resources :comment_comments, defaults: { format: :html }
   resources :comment_comment_reports, defaults: { format: :html }
   resources :date_notifications, defaults: { format: :html }

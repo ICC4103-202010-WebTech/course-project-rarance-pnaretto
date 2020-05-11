@@ -1,0 +1,110 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<hr>
+<h2>Current Active Reports</h2>
+<h3>Comment Reports</h3>
+<table>
+  <tbody>
+  <tr>
+    <th>
+      Message
+    </th>
+    <th>
+      User
+    </th>
+    <th>
+      Comment
+    </th>
+  </tr>
+  <% @CR.each  do |v| %>
+    <tr>
+      <td><%= v.message %></td>
+      <td><%= v.user.name %></td>
+      <td><%= v.event_comment.message %></td>
+      <td><%= link_to 'Show', v.event_comment %></td>
+      <td><%= link_to 'Edit', v.event_comment %></td>
+    </tr>
+  <% end %>
+  <% @CCR.each  do |v| %>
+    <tr>
+      <td><%= v.message %></td>
+      <td><%= v.user.name %></td>
+      <td><%= v.comment_comment.message %></td>
+      <td><%= link_to 'Show', v.comment_comment %></td>
+      <td><%= link_to 'Edit', v.comment_comment %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<h3>Organization Reports</h3>
+<table>
+  <tbody>
+  <tr>
+    <th>
+      Message
+    </th>
+    <th>
+      User
+    </th>
+    <th>
+      Organization
+    </th>
+  </tr>
+  <% @OR.each  do |v| %>
+    <tr>
+      <td><%= v.message %></td>
+      <td><%= v.user.name %></td>
+      <td><%= v.organization.name %></td>
+      <td><%= link_to 'Show', v .organization%></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<h3>Event Reports</h3>
+<table>
+  <tbody>
+  <tr>
+    <th>
+      Message
+    </th>
+    <th>
+      User
+    </th>
+    <th>
+      Organization
+    </th>
+  </tr>
+  <% @ER.each  do |v| %>
+    <tr>
+      <td><%= v.message %></td>
+      <td><%= v.user.name %></td>
+      <td><%= v.event.name %></td>
+      <td><%= link_to 'Show', v.event %></td>
+    </tr>
+  <% end %>
+  </tbody>
+
+<h3>User Reports</h3>
+<table>
+  <tbody>
+  <tr>
+    <th>
+      Message
+    </th>
+    <th>
+      User Reporting
+    </th>
+    <th>
+      User Reported
+    </th>
+  </tr>
+  <% @UR.each  do |v| %>
+
+  <% end %>
+  </tbody>
+</table>
+
+
+<hr>
+<hr>
