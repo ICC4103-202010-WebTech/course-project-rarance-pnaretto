@@ -1,4 +1,35 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Your Profile</h1>
+<table>
+  <tbody>
+  <tr>
+    <th>
+      Name
+    </th>
+    <th>
+      Email
+    </th>
+    <th>
+      Profile photo
+    </th>
+    <th>
+      location
+    </th>
+    <th>
+      password
+    </th>
+  </tr>
+    <tr>
+      <td><%= @user.name %></td>
+      <td><%= @user.email %></td>
+      <td><%= @user.profile_photo %></td>
+      <td><%= @user.location %></td>
+      <td><%= @user.password %></td>
+    </tr>
+  </tbody>
+</table>
+
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
