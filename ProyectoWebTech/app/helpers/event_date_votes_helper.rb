@@ -1,0 +1,2 @@
+module EventDateVotesHelper
+end

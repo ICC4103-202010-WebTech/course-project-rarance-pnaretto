@@ -1,0 +1,2 @@
+module EventCommentReportsHelper
+end

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Organization File Reports</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @organization_file_reports.each do |organization_file_report| %>
+      <tr>
+        <td><%= link_to 'Show', organization_file_report %></td>
+        <td><%= link_to 'Edit', edit_organization_file_report_path(organization_file_report) %></td>
+        <td><%= link_to 'Destroy', organization_file_report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Organization File Report', new_organization_file_report_path %>

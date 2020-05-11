@@ -1,0 +1,24 @@
+
+
+.navbar {
+    background-color:  dodgerblue;
+}
+
+.flex-navbar{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    padding: 10px;
+    margin: 10px;
+    list-style: none;
+}
+
+
+.navbar-item {
+    margin: 5px;
+    border: #EFEFEF;
+    border-radius: 5px;
+    border-width: 20px;
+    background-color: #EFEFEF;
+
+}
