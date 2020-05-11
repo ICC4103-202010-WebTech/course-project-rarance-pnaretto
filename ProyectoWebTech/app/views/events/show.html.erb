@@ -34,6 +34,33 @@
     </tr>
   </tbody>
 </table>
+
+<h1>Comments</h1>
+<table>
+  <tr>
+    <th>
+      User
+    </th>
+    <th>
+      Comment
+    </th>
+  </tr>
+  <% @event.event_comments.each  do |comment| %>
+    <tr>
+      <td><%= comment.user.name%></td>
+      <td><%= comment.message %></td>
+      <td></td>
+      <% comment.comment_comments.each do |commentco| %>
+      <tr>
+        <td></td>
+        <td><%= commentco.user.name%></td>
+        <td><%= commentco.message %></td>
+      </tr>
+    <%end %>
+    </tr>
+
+  <%end %>
+</table>
 <hr>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |

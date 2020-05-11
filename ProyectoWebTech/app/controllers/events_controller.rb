@@ -6,6 +6,7 @@ class EventsController < ApplicationController
   def index
     @events_invited =  Event.joins(:event_invitations).where(event_invitations:{user_id: 1})
     @events_own = Event.where(user_id: 1)
+
   end
 
   # GET /events/1
