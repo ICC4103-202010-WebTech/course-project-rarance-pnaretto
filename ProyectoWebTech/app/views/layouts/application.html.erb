@@ -16,6 +16,7 @@
     <li class="navbar-item"><%= link_to 'Profile', User.first %></li>
     <li class="navbar-item"><%= link_to 'Events', events_path %></li>
     <li class="navbar-item"><%= link_to 'Organizations', organizations_path %></li>
+    <li class="navbar-item"><%= link_to 'Admin', "http://localhost:3000/admin" %></li>
   </ul>
 </nav>
 
@@ -23,7 +24,7 @@
     <%= yield %>
   </body>
 
-<footer>
-  <p>Arance hcupalo</p>
+<footer class="navbar">
+  <p>Hola e.e</p>
 </footer>
 </html>
