@@ -4,34 +4,32 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
-      resources :users do
-        resources :messages, shallow:true
-        resources :user_reports, shallow: true
-        resources :events, shallow: true do
-          resources :event_comments, shallow: true do
-            resources :comment_comments, shallow: true do
-              resources :comment_comment_reports, shallow: true
-            end
-            resources :event_comment_resports, shallow: true
+      resources :messages, shallow:true
+      resources :user_reports, shallow: true
+      resources :events, shallow: true do
+        resources :event_comments, shallow: true do
+          resources :comment_comments, shallow: true do
+            resources :comment_comment_reports, shallow: true
           end
-          resources :event_files, shallow: true do
-            resources :event_files_reports, shallow: true
-          end
-          resources :event_dates, shallow:true do
-            resources :event_date_votes, shallow: true
-          end
-          resources :date_notification, shallow:true
-          resources :event_invitations, shallow: true
-          resources :event_reports, shallow: true
+          resources :event_comment_resports, shallow: true
         end
-        resources :organizations, shallow: true do
-          resources :orfanization_members, shallow: true
-          resources :organization_files,shallow: true do
-            resources :organization_file_reports, shallow:true
-          end
-          resources :organization_events, shallow: true
-          resources :organization_reports, shallow: true
+        resources :event_files, shallow: true do
+          resources :event_files_reports, shallow: true
         end
+        resources :event_dates, shallow:true do
+          resources :event_date_votes, shallow: true
+        end
+        resources :date_notification, shallow:true
+        resources :event_invitations, shallow: true
+        resources :event_reports, shallow: true
+      end
+      resources :organizations, shallow: true do
+        resources :orfanization_members, shallow: true
+        resources :organization_files,shallow: true do
+          resources :organization_file_reports, shallow:true
+        end
+        resources :organization_events, shallow: true
+        resources :organization_reports, shallow: true
       end
     end
   end
@@ -54,7 +52,7 @@ Rails.application.routes.draw do
   resources :organization_files, defaults: { format: :html }
   resources :organization_file_reports, defaults: { format: :html }
   resources :organization_members, defaults: { format: :html }
-  resources :organizarion_reports, defaults: { format: :html }
+  resources :organization_reports, defaults: { format: :html }
   resources :users, defaults: { format: :html }
   resources :users_reports, defaults: { format: :html }
 
