@@ -142,6 +142,7 @@ class API::V1::EventsController < APIController
       params.fetch(:event, {}).permit(:title, :ubication, :description, :bannerPhoto, :public, :decition, :min_vote, :start_voting, :finish_voting, :user)
     end
 end
+
 class API::V1::EventsController < APIController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 

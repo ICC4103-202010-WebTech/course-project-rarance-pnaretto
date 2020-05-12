@@ -1,69 +1,63 @@
 <p id="notice"><%= notice %></p>
 
-<hr>
-<h1><%=@event.title %></h1>
-<table>
-  <tbody>
-  <tr>
-    <th>
-      Ubication
-    </th>
-    <th>
-      Owner
-    </th>
-    <th>
-      Description
-    </th>
-    <th>
-      Public
-    </th>
-    <th>
-      Banner public
-    </th>
-    <th>
-      Decition
-    </th>
-  </tr>
-    <tr>
-      <td><%= @event.ubication %></td>
-      <td><%= @event.user.name %></td>
-      <td><%= @event.description %></td>
-      <td><%= @event.public %></td>
-      <td><%= @event.bannerPhoto %></td>
-      <td><%= @event.decition %></td>
-    </tr>
-  </tbody>
-</table>
+<head>
+  <%= stylesheet_link_tag 'global', media:'all', 'data-turbolinks-track': 'reload' %>
+</head>
 
-<h1>Comments</h1>
-<table>
-  <tr>
-    <th>
-      User
-    </th>
-    <th>
-      Comment
-    </th>
-  </tr>
-  <% @event.event_comments.each  do |comment| %>
+<div class="columna-blanca" >
+
+  <h1><%=@event.title %></h1>
+  <%= image_tag(@event.bannerPhoto,style:"with:500px; height:250px", :alt => "rss feed") %>
+
+  <table>
+    <tbody>
     <tr>
-      <td><%= comment.user.name%></td>
-      <td><%= comment.message %></td>
-      <td></td>
-      <% comment.comment_comments.each do |commentco| %>
+      <th>
+        Ubication
+      </th>
+      <th>
+        Owner
+      </th>
+      <th>
+        Description
+      </th>
+    </tr>
       <tr>
-        <td></td>
-        <td><%= commentco.user.name%></td>
-        <td><%= commentco.message %></td>
+        <td><%= @event.ubication %></td>
+        <td><%= @event.user.name %></td>
+        <td><%= @event.description %></td>
       </tr>
-    <%end %>
+    </tbody>
+  </table>
+
+  <h1>Comments</h1>
+  <table>
+    <tr>
+      <th>
+        User
+      </th>
+      <th>
+        Comment
+      </th>
     </tr>
+    <% @event.event_comments.each  do |comment| %>
+      <tr>
+        <td><%= comment.user.name%></td>
+        <td><%= comment.message %></td>
+        <td></td>
+        <% comment.comment_comments.each do |commentco| %>
+        <tr>
+          <td></td>
+          <td><%= commentco.user.name%></td>
+          <td><%= commentco.message %></td>
+        </tr>
+      <%end %>
+      </tr>
 
-  <%end %>
-</table>
-<hr>
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
-
+    <%end %>
+  </table>
+  <hr>
+  <%= link_to 'Edit', edit_event_path(@event) %>
+  <%= link_to 'Back', events_path %>
+</div>
 

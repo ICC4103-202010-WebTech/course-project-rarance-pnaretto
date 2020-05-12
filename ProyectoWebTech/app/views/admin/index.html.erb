@@ -1,9 +1,15 @@
 <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 -->
+<head>
+  <%= stylesheet_link_tag 'global', media:'all', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<div class="columna-azul">
+<div class="columna-blanca">
 <hr>
 <h2>Current Active Reports</h2>
 <h3>Comment Reports</h3>
-<table>
+<table class="center">
   <tbody>
   <tr>
     <th>
@@ -36,9 +42,10 @@
   <% end %>
   </tbody>
 </table>
-
+</div>
+<div class="columna-blanca">
 <h3>Organization Reports</h3>
-<table>
+<table class="center">
   <tbody>
   <tr>
     <th>
@@ -61,9 +68,10 @@
   <% end %>
   </tbody>
 </table>
-
+</div>
+<div class="columna-blanca">
 <h3>Event Reports</h3>
-<table>
+<table class="center">
   <tbody>
   <tr>
     <th>
@@ -86,8 +94,10 @@
   <% end %>
   </tbody>
 </table>
+</div>
+<div class="columna-blanca">
 <h3>User Reports</h3>
-<table>
+<table class="center">
   <tbody>
   <tr>
     <th>
@@ -105,3 +115,5 @@
   <% end %>
   </tbody>
 </table>
+</div>
+</div>

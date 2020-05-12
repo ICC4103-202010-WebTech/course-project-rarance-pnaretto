@@ -1,57 +1,46 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Events</h1>
+<head>
+  <%= stylesheet_link_tag 'global', media:'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<div class="columna-azul">
+<div class="columna-blanca">
 
-<table>
-  <tbody>
-  <h4>Your events</h4>
-  <tr>
-    <th>
-      Title
-    </th>
-    <th>
-      Ubication
-    </th>
-    <th>
-      Owner
-    </th>
-  </tr>
+  <h1 class="center">Events</h1>
+  <h2>Your events</h2>
   <% @events_own.each do |event| %>
-    <tr>
-      <td><%= event.title %></td>
-      <td><%= event.ubication %></td>
-      <td><%= event.user.name %></td>
-      <td><%= link_to 'Show', event %></td>
-    </tr>
+
+  <h2 class="columna-blanca"><%=event.title %></h2>
+  <%=link_to image_tag(event.bannerPhoto,style:"with:500px; height:250px", :alt => "rss feed"),event %>
+
+    <ul class="columna-blanca">
+      <li>Ubication: <%= event.ubication %></li>
+      <li>User: <%= event.user.name %></li>
+      <li><%= link_to 'Show', event %></li>
+    </ul>
   <% end %>
-  </tbody>
-</table>
-  <hr>
+
+  <%= link_to 'New Event', new_event_path %>
+
+</div>
+  <div class="columna-blanca">
 <table>
   <tbody>
-  <h4>Event where you are invited</h4>
-  <tr>
-    <th>
-      Title
-    </th>
-    <th>
-      Ubication
-    </th>
-    <th>
-      Owner
-    </th>
-  </tr>
+  <h2>Event where you are invited</h2>
+
   <% @events_invited.each do |event| %>
-    <tr>
-      <td><%= event.title %></td>
-      <td><%= event.ubication %></td>
-      <td><%= event.user.name %></td>
+    <h2><%=event.title %></h2>
+    <%= image_tag(event.bannerPhoto,style:"with:500px; height:250px", :alt => "rss feed") %>
+
+    <tr class="columna-blanca">
+      <td>Ubication: <%= event.ubication %></td>
+      <td>User: <%= event.user.name %></td>
       <td><%= link_to 'Show', event %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
-
 <br>
 
-<%= link_to 'New Event', new_event_path %>
+</div>
+</div>

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <%= stylesheet_link_tag 'navigation', media:'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'global', media:'all', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <header>
@@ -11,20 +11,28 @@
   </h1>
 </header>
 
-<nav class="navbar">
-  <ul class="flex-navbar">
-    <li class="navbar-item"><%= link_to 'Profile', User.first %></li>
-    <li class="navbar-item"><%= link_to 'Events', events_path %></li>
-    <li class="navbar-item"><%= link_to 'Organizations', organizations_path %></li>
-    <li class="navbar-item"><%= link_to 'Admin', "http://localhost:3000/admin" %></li>
-  </ul>
-</nav>
+<div class="columna-azul">
 
-  <body>
+<div class="linea-azul">
+
+  <aside>
+    <ul class="columna-azul">
+      <li class="item"><%= link_to 'Profile', User.first %></li>
+      <li class="item"><%= link_to 'Events', events_path %></li>
+      <li class="item"><%= link_to 'Organizations', organizations_path %></li>
+      <li class="item"><%= link_to 'Admin', "http://localhost:3000/admin" %></li>
+    </ul>
+  </aside>
+
+  <body class="flex-body">
     <%= yield %>
   </body>
 
-<footer class="navbar">
+</div>
+
+<footer class="columna-blanca">
   <p>Hola e.e</p>
 </footer>
+
+</div>
 </html>

@@ -1,35 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Your Profile</h1>
-<table>
-  <tbody>
-  <tr>
-    <th>
-      Name
-    </th>
-    <th>
-      Email
-    </th>
-    <th>
-      Profile photo
-    </th>
-    <th>
-      location
-    </th>
-    <th>
-      password
-    </th>
-  </tr>
-    <tr>
-      <td><%= @user.name %></td>
-      <td><%= @user.email %></td>
-      <td><%= @user.profile_photo %></td>
-      <td><%= @user.location %></td>
-      <td><%= @user.password %></td>
-    </tr>
-  </tbody>
-</table>
+<head>
+  <%= stylesheet_link_tag 'navigation', media:'all', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<div class="columna-blanca">
+  <h1>Your Profile</h1>
+  <div class="linea-blanca">
+    <%= image_tag(@user.profile_photo,style:"with:500px; height:250px", :alt => "rss feed") %>
+      <ul class="columna-blanca">
+        <li>Name: <%= @user.name %></li>
+        <li>Email: <%= @user.email %></li>
+        <li>Location: <%= @user.location %></li>
+      </ul>
+  </div>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Edit', edit_user_path(@user) %>
+<%= link_to 'Back', root_path %>
+</div>
