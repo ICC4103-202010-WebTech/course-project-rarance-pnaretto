@@ -6,12 +6,18 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :messages, shallow:true
       resources :user_reports, shallow: true
+      resources :event_comments, shallow: true do
+        resources :comment_comments, shallow: true do
+          resources :comment_comment_reports, shallow: true
+        end
+        resources :event_comment_reports, shallow: true
+      end
       resources :events, shallow: true do
         resources :event_comments, shallow: true do
           resources :comment_comments, shallow: true do
             resources :comment_comment_reports, shallow: true
           end
-          resources :event_comment_resports, shallow: true
+          resources :event_comment_reports, shallow: true
         end
         resources :event_files, shallow: true do
           resources :event_files_reports, shallow: true

@@ -10,6 +10,7 @@ class API::V1::EventCommentsController < APIController
   # GET /event_comments/1
   # GET /event_comments/1.json
   def show
+    @events
   end
 
   # GET /event_comments/new
@@ -25,29 +26,23 @@ class API::V1::EventCommentsController < APIController
   # POST /event_comments.json
   def create
     @event_comment = EventComment.new(event_comment_params)
-
-    respond_to do |format|
-      if @event_comment.save
-        format.html { redirect_to @event_comment, notice: 'Event comment was successfully created.' }
-        format.json { render :show, status: :created, location: @event_comment }
-      else
-        format.html { render :new }
-        format.json { render json: @event_comment.errors, status: :unprocessable_entity }
-      end
+    @event_comment.user = User.find(params[:user_id])
+    @event_comment.event = Event.find(params[:event_id])
+    if @event_comment.save
+      render :show, status: :created, location: @event
+    else
+      render json: @event_comment.errors, status: :unprocessable_entity
     end
   end
+
 
   # PATCH/PUT /event_comments/1
   # PATCH/PUT /event_comments/1.json
   def update
-    respond_to do |format|
-      if @event_comment.update(event_comment_params)
-        format.html { redirect_to @event_comment, notice: 'Event comment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event_comment }
-      else
-        format.html { render :edit }
-        format.json { render json: @event_comment.errors, status: :unprocessable_entity }
-      end
+    if @event_comment.update(event_comment_params)
+      render :show, status: :ok, location: api_v1_events_path(@event_comment)
+    else
+      render json: @event_comment.errors, status: :unprocessable_entity
     end
   end
 
@@ -55,10 +50,7 @@ class API::V1::EventCommentsController < APIController
   # DELETE /event_comments/1.json
   def destroy
     @event_comment.destroy
-    respond_to do |format|
-      format.html { redirect_to event_comments_url, notice: 'Event comment was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    head :no_content
   end
 
   private
@@ -66,9 +58,8 @@ class API::V1::EventCommentsController < APIController
     def set_event_comment
       @event_comment = EventComment.find(params[:id])
     end
-
     # Only allow a list of trusted parameters through.
     def event_comment_params
-      params.fetch(:event_comment, {})
+      params.fetch(:event_comment, {}).permit(:id, :message, :image, :created_at, :event_id, :user_id)
     end
 end
