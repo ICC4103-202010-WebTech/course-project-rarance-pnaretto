@@ -33,7 +33,7 @@ h3{
 .linea-azul{
     display: flex;
     flex-flow: wrap ;
-    justify-content: start;
+    justify-content: center;
     padding: 10px;
     margin: 10px;
     list-style: none;
