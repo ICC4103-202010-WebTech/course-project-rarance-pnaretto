@@ -1,17 +1,64 @@
-<%= form_with(model: event_file, local: true) do |form| %>
-  <% if event_file.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(event_file.errors.count, "error") %> prohibited this event_file from being saved:</h2>
+<div class="row ml-0">
+  <%= form_with(model: event_file, local: true) do |form| %>
+    <% if event_file.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(event_file.errors.count, "error") %> prohibited this event_file from being saved:</h2>
 
-      <ul>
-        <% event_file.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+        <ul>
+          <% event_file.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= errors_for event %>
+    <div class="form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :description %>
+      <%= form.text_area :description, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :flyer %>
+      <%= form.file_field :flyer %>
+    </div>
+    <div class="form-group">
+      <%= form.label :start_date %>
+      <%= form.datetime_local_field :start_date %>
+    </div>
+    <div class="form-group">
+      <%= form.label :event_venue %>
+      <%= form.collection_select(:event_venue_id, EventVenue.all.order(name: :asc), :id, :name, {}, { class: "form-control" }) %>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= ticket_type_section_title %></h5>
+        <p><%= ticket_type_instruction_text %></p>
+        <%=form.fields_for :ticket_types do |ticket_types_form| %>
+          <div class="form-group">
+            <%= ticket_types_form.label :description %>
+            <%= ticket_types_form.text_field :description, class: "form-control" %>
+            <%= ticket_types_form.label :ticket_price %>
+            <%= ticket_types_form.text_field :ticket_price, class: "form-control" %>
+            <% if action_name == 'edit' %>
+              <%= ticket_types_form.label "Delete"%>
+              <%= ticket_types_form.check_box :_destroy %>
+            <% end %>
+            <hr>
+          </div>
         <% end %>
-      </ul>
+      </div>
+    </div>
+    <div class="form-group mt-2">
+      <%= form.submit submit_btn_text, class: ["btn", "btn-primary"] %>
+      <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
     </div>
   <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

@@ -18,6 +18,8 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    @event.user = User.first()
+    @event.event_dates.build
   end
 
   # GET /events/1/edit
@@ -72,6 +74,7 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.fetch(:event, {})
+      params.fetch(:event, {}).permit( :id, :title, :ubication, :description, :public, :decition, :min_vote, :start_voting, :finish_voting, :bannerphoto,
+                                       event_date_attributes: [:id, :date, :_destroy])
     end
 end
