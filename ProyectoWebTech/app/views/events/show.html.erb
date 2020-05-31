@@ -7,8 +7,9 @@
 <div class="columna-blanca" >
 
   <h1><%=@event.title %></h1>
+  <% unless @event.bannerPhoto == nil %>
   <%= image_tag(@event.bannerPhoto,style:"with:500px; height:250px", :alt => "rss feed") %>
-
+  <% end %>
   <table>
     <tbody>
     <tr>

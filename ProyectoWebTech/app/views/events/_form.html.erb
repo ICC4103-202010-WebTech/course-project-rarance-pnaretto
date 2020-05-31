@@ -12,7 +12,7 @@
       </div>
     <% end %>
 
-    <%= form.hidden_field :user, value: User.first %>
+    <%= form.hidden_field :user_id, value: User.first.id %>
 
     <div class="form-group">
       <%= form.label :title %>
@@ -29,6 +29,10 @@
     <div class="form-group">
       <%= form.label :decition %>
       <%= form.select :decition, [["hola e.e",1], ["chao e.e",2]] %>
+    </div>
+    <div class="form-group">
+      <%= form.label :bannerPhoto %>
+      <%= form.text_field :bannerPhoto, class: "form-control" %>
     </div>
     <div class="card">
       <div class="card-body">
