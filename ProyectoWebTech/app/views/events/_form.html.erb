@@ -38,27 +38,17 @@
       <div class="card-body">
         <h5 class="card-title">Add event date</h5>
         <p>You need to add a event date to your newly created event</p>
-        <%=form.fields_for :event_date do |event_date_form| %>
+        <%=form.fields_for :event_dates do |event_dates_form| %>
           <div class="form-group">
-            <%= event_date_form.label "Date 1" %>
-            <%= event_date_form.datetime_local_field :date, class: "form-control" %>
+            <%= event_dates_form.label :date %>
+            <%= event_dates_form.datetime_local_field :date, class: "form-control" %>
             <% if action_name == 'edit' %>
-              <%= event_date_form.label "Delete"%>
-              <%= event_date_form.check_box :_destroy %>
+              <%= event_dates_form.label "Delete"%>
+              <%= event_dates_form.check_box :_destroy %>
             <% end %>
           </div>
         <% end %>
-        <%=form.fields_for :event_date do |event_date_form| %>
-          <div class="form-group">
-            <%= event_date_form.label "Date 2" %>
-            <%= event_date_form.datetime_local_field :date, class: "form-control" %>
-            <% if action_name == 'edit' %>
-              <%= event_date_form.label "Delete"%>
-              <%= event_date_form.check_box :_destroy %>
-            <% end %>
-            <hr>
-          </div>
-        <% end %>
+
       </div>
     </div>
 

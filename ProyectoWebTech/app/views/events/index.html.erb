@@ -11,7 +11,9 @@
   <% @events_own.each do |event| %>
 
   <h2 class="columna-blanca"><%=event.title %></h2>
-  <%=link_to image_tag(event.bannerPhoto,style:"with:500px; height:250px", :alt => "rss feed"),event %>
+    <% unless event.bannerPhoto == nil %>
+      <%=link_to image_tag(event.bannerPhoto,style:"with:500px; height:250px", :alt => "rss feed"),event %>
+    <% end %>
 
     <ul class="columna-blanca">
       <li>Ubication: <%= event.ubication %></li>
