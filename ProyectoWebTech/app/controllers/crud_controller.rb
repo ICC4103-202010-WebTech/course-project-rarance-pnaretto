@@ -7,7 +7,7 @@ class CrudController < ApplicationController
   def index
     @events =  Event.all
     @comments =  Event.all
-    @events =  Event.all
+    @organizations =  Organization.all
 
 
   end

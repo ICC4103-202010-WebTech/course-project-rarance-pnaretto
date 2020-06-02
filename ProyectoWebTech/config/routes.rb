@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :comment_comments, defaults: { format: :html }
   resources :event_comments, defaults: { format: :html }
+  resources :organizations, defaults: { format: :html }
 
   resources :event_comments, shallow: true do
     resources :comment_comments, shallow: true do
