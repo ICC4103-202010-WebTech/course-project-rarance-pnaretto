@@ -53,17 +53,35 @@
           <td><%= commentco.message %></td>
         </tr>
         <%end %>
+        <tr>
+          <%= form_for :comment_comment, :url => {:controller => "comment_comments", :action => "create"} do |comment_comment_form|%>
+
+            <%= comment_comment_form.text_field :user_id, value: User.first.id, type: "hidden" %>
+            <%= comment_comment_form.text_field :event_comment_id, value: comment.id, type: "hidden" %>
+
+          <tr class="form-group">
+            <td></td>
+            <td>
+              <%= comment_comment_form.label :message %>
+              <%= comment_comment_form.text_field :message, class: "form-control" %>
+
+              <%= comment_comment_form.label :image %>
+              <%= comment_comment_form.file_field :image, class: "form-control" %>
+            </td>
+            <td><%= comment_comment_form.submit %></td>
+          </tr>
+        <% end %>
+        </tr>
     <% end %>
-    <tr>
-      <td><%= render("event_comments/form", event_comment: EventComment.new())%></td>
-    </tr>
     </tr>
     <%= form_for :event_comment, :url => {:controller => "event_comments", :action => "create"} do |comment_form|%>
-      <%= comment_form.hidden_field :user_id, class: "form-control" %>
+
+      <%= comment_form.text_field :user_id, value: User.first.id, type: "hidden" %>
+      <%= comment_form.text_field :event_id, value: @event.id, type: "hidden" %>
+
       <tr class="form-group">
-        <td></td>
+        <td><%= comment_form.label :message %></td>
         <td>
-          <%= comment_form.label :message %>
           <%= comment_form.text_field :message, class: "form-control" %>
 
           <%= comment_form.label :image %>

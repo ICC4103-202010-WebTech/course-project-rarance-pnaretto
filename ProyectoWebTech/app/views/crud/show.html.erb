@@ -1,0 +1,62 @@
+<p id="notice"><%= notice %></p>
+
+<head>
+  <%= stylesheet_link_tag 'global', media:'all', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<div class="columna-blanca" >
+
+  <h1><%=@events.title %></h1>
+
+  <table>
+    <tbody>
+    <tr>
+      <th>
+        Ubication
+      </th>
+      <th>
+        Owner
+      </th>
+      <th>
+        Description
+      </th>
+    </tr>
+      <tr>
+        <td><%= @events.ubication %></td>
+        <td><%= @events.user.name %></td>
+        <td><%= @events.description %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h1>Comments</h1>
+  <table>
+    <tr>
+      <th>
+        User
+      </th>
+      <th>
+        Comment
+      </th>
+    </tr>
+    <h2><%=@event.title %></h2>
+    <% @event.event_comments.each  do |comment| %>
+      <tr>
+        <td><%= comment.user.name%></td>
+        <td><%= comment.message %></td>
+
+        <% comment.comment_comments.each do |commentco| %>
+        <tr>
+          <td><%= commentco.user.name%></td>
+          <td><%= commentco.message %></td>
+        </tr>
+      <%end %>
+      </tr>
+
+    <%end %>
+  </table>
+  <hr>
+  <%= link_to 'Edit', edit_event_path(@event) %>
+  <%= link_to 'Back', events_path %>
+</div>
+

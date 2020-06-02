@@ -3,13 +3,13 @@ class Event < ApplicationRecord
   has_one_attached :bannerphoto
 
   belongs_to :user
-  has_many :event_invitations
-  has_many :event_dates
-  has_many :date_notifications
-  has_many :event_reports
-  has_many :event_comments
-  has_many :event_files
-  has_many :organization_event
+  has_many :event_invitations , dependent: :delete_all
+  has_many :event_dates , dependent: :delete_all
+  has_many :date_notifications , dependent: :delete_all
+  has_many :event_reports , dependent: :delete_all
+  has_many :event_comments , dependent: :delete_all
+  has_many :event_files , dependent: :delete_all
+  has_many :organization_event , dependent: :delete_all
 
   accepts_nested_attributes_for :event_dates, allow_destroy: true
 

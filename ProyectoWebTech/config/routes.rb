@@ -4,10 +4,69 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :event_dates
-    resources :event_comments
+    resources :event_comments, shallow: true
     resources :comment_comments
   end
 
+  resources :comment_comments, shallow: true do
+    resources :comment_comment_reports, shallow: true
+  end
+
+  resources :event_comments, shallow: true do
+    resources :comment_comments, shallow: true do
+      resources :comment_comment_reports, shallow: true
+    end
+    resources :event_comment_reports, shallow: true
+  end
+
+  resources :organizations, shallow: true do
+    resources :orfanization_members, shallow: true
+    resources :organization_files,shallow: true do
+      resources :organization_file_reports, shallow:true
+    end
+    resources :organization_events, shallow: true
+    resources :organization_reports, shallow: true
+  end
+
+  resources :crud do
+    resources :organizations, shallow: true do
+      resources :orfanization_members, shallow: true
+      resources :organization_files,shallow: true do
+        resources :organization_file_reports, shallow:true
+      end
+      resources :organization_events, shallow: true
+      resources :organization_reports, shallow: true
+    end
+    resources :events, shallow: true do
+      get :delete
+      member do
+        get :delete
+      end
+      resources :comment_comments, shallow: true do
+        resources :comment_comment_reports, shallow: true
+      end
+      resources :event_comments, shallow: true do
+        resources :comment_comments, shallow: true do
+          resources :comment_comment_reports, shallow: true
+        end
+        resources :event_comment_reports, shallow: true
+      end
+      resources :event_files, shallow: true do
+        resources :event_files_reports, shallow: true
+      end
+      resources :event_dates, shallow:true do
+        resources :event_date_votes, shallow: true
+      end
+      resources :event_invitations, shallow: true
+      resources :event_reports, shallow: true
+    end
+    resources :event_comments, shallow: true do
+      resources :comment_comments, shallow: true do
+        resources :comment_comment_reports, shallow: true
+      end
+      resources :event_comment_reports, shallow: true
+    end
+  end
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
       resources :messages, shallow:true
@@ -45,6 +104,7 @@ Rails.application.routes.draw do
       end
     end
   end
+
   resources :admin, defaults: { format: :html }
   resources :comment_comments, defaults: { format: :html }
   resources :comment_comment_reports, defaults: { format: :html }
