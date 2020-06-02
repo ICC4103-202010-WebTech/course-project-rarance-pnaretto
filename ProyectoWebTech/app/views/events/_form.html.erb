@@ -34,6 +34,10 @@
       <%= form.label :bannerPhoto %>
       <%= form.text_field :bannerPhoto, class: "form-control" %>
     </div>
+    <div class="form-group">
+      <%= form.label :public %>
+      <%= form.select :public, [["Public",1], ["Private",2]] %>
+    </div>
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Add event date</h5>

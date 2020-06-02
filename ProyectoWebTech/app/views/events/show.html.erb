@@ -52,10 +52,26 @@
           <td><%= commentco.user.name%></td>
           <td><%= commentco.message %></td>
         </tr>
-      <%end %>
-      </tr>
+        <%end %>
+    <% end %>
+    <tr>
+      <td><%= render("event_comments/form", event_comment: EventComment.new())%></td>
+    </tr>
+    </tr>
+    <%= form_for :event_comment, :url => {:controller => "event_comments", :action => "create"} do |comment_form|%>
+      <%= comment_form.hidden_field :user_id, class: "form-control" %>
+      <tr class="form-group">
+        <td></td>
+        <td>
+          <%= comment_form.label :message %>
+          <%= comment_form.text_field :message, class: "form-control" %>
 
-    <%end %>
+          <%= comment_form.label :image %>
+          <%= comment_form.file_field :image, class: "form-control" %>
+        </td>
+        <td><%= comment_form.submit %></td>
+      </tr>
+    <% end %>
   </table>
   <hr>
   <%= link_to 'Edit', edit_event_path(@event) %>

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :event_dates
+    resources :event_comments
+    resources :comment_comments
   end
 
   namespace :api, defaults: {format: :json} do

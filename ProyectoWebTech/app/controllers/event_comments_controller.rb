@@ -15,6 +15,8 @@ class EventCommentsController < ApplicationController
   # GET /event_comments/new
   def new
     @event_comment = EventComment.new
+    @event_comment.event = Event.first()
+    @event_comment.user = User.first()
   end
 
   # GET /event_comments/1/edit
@@ -69,6 +71,6 @@ class EventCommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_comment_params
-      params.fetch(:event_comment, {})
+      params.fetch(:event_comment, {}).permit(:id, :message, :image, :user_id, :event_id)
     end
 end
