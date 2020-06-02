@@ -46,6 +46,11 @@
         <td><%= comment.user.name%></td>
         <td><%= comment.message %></td>
         <td></td>
+        <tr>
+          <th></th>
+          <th>User</th>
+          <th>Reply</th>
+        </tr>
         <% comment.comment_comments.each do |commentco| %>
         <tr>
           <td></td>
@@ -63,12 +68,14 @@
             <td></td>
             <td>
               <%= comment_comment_form.label :message %>
+            </td>
+            <td>
               <%= comment_comment_form.text_field :message, class: "form-control" %>
 
               <%= comment_comment_form.label :image %>
               <%= comment_comment_form.file_field :image, class: "form-control" %>
+              <%= comment_comment_form.submit %>
             </td>
-            <td><%= comment_comment_form.submit %></td>
           </tr>
         <% end %>
         </tr>
