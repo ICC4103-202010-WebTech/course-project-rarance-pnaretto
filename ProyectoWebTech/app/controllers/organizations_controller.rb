@@ -16,6 +16,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/new
   def new
     @organization = Organization.new
+    @organization.user = User.first
   end
 
   # GET /organizations/1/edit
@@ -70,6 +71,6 @@ class OrganizationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def organization_params
-      params.fetch(:organization, {})
+      params.fetch(:organization, {}).permit( :id, :name, :description, :banner_photo, :user_id)
     end
 end
