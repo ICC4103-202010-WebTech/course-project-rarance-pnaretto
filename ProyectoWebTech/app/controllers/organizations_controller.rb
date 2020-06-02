@@ -11,6 +11,8 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1
   # GET /organizations/1.json
   def show
+    @public_events = OrganizationEvent.where(organization_id: @organization.id)
+
   end
 
   # GET /organizations/new

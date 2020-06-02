@@ -10,29 +10,27 @@
   <% unless @event.bannerPhoto == nil %>
   <%= image_tag(@event.bannerPhoto,style:"with:500px; height:250px", :alt => "rss feed") %>
   <% end %>
-  <table>
-    <tbody>
-    <tr>
-      <th>
-        Ubication
-      </th>
-      <th>
-        Owner
-      </th>
-      <th>
-        Description
-      </th>
-    </tr>
-      <tr>
-        <td><%= @event.ubication %></td>
-        <td><%= @event.user.name %></td>
-        <td><%= @event.description %></td>
-      </tr>
-    </tbody>
-  </table>
+  <ul class="columna-blanca">
+    <il>
+      Ubication: <%= @event.ubication %>
+    </il>
+    <il>
+      Owner: <%= @event.user.name %>
+    </il>
+    <il>
+      Description: <%= @event.description %>
+    </il>
+  </ul>
+
+  <div><%= link_to 'Edit', edit_event_path(@event) %></div>
+
+
+  <div>
+
+  </div>
 
   <h1>Comments</h1>
-  <table>
+  <table class = "columna-blanca">
     <tr>
       <th>
         User
@@ -74,7 +72,7 @@
 
               <%= comment_comment_form.label :image %>
               <%= comment_comment_form.file_field :image, class: "form-control" %>
-              <%= comment_comment_form.submit %>
+              <%= comment_comment_form.submit("Reply") %>
             </td>
           </tr>
         <% end %>
@@ -94,12 +92,11 @@
           <%= comment_form.label :image %>
           <%= comment_form.file_field :image, class: "form-control" %>
         </td>
-        <td><%= comment_form.submit %></td>
+        <td><%= comment_form.submit("Comment") %></td>
       </tr>
     <% end %>
   </table>
   <hr>
-  <%= link_to 'Edit', edit_event_path(@event) %>
   <%= link_to 'Back', events_path %>
 </div>
 

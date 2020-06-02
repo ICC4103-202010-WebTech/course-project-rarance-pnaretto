@@ -1,6 +1,15 @@
-<h1>Editing Event</h1>
 
-<%= render 'form', event: @event %>
+<head>
+  <%= stylesheet_link_tag 'global', media:'all', 'data-turbolinks-track': 'reload' %>
+</head>
 
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
+<div class="columna-blanca" >
+
+  <h1>Editing Event</h1>
+
+  <%= render 'form', event: @event %>
+
+  <%= link_to 'Show', @event %>
+  <%= link_to 'Back', events_path %>
+
+</div>

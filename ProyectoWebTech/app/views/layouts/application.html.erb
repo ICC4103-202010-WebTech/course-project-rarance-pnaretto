@@ -15,23 +15,24 @@
 
 <div class="columna-azul">
 
-<div class="linea-azul">
+  <div class="linea-azul">
 
-  <aside>
-    <ul class="columna-azul">
-      <li class="item"><%= link_to 'Profile', User.first %></li>
-      <li class="item"><%= link_to 'Events', events_path %></li>
-      <li class="item"><%= link_to 'Organizations', organizations_path %></li>
-      <li class="item"><%= link_to 'Admin', "http://localhost:3000/admin" %></li>
-    </ul>
-  </aside>
+    <aside>
+      <ul class="columna-azul">
+        <li class="item"><%= link_to 'Profile', User.first %></li>
+        <li class="item"><%= link_to 'Events', events_path %></li>
+        <li class="item"><%= link_to 'Organizations', organizations_path %></li>
+        <li class="item"><%= link_to 'Admin', "http://localhost:3000/admin" %></li>
+      </ul>
+    </aside>
 
-  <body >
-    <%= yield %>
-  </body>
+    <body>
+      <%= yield %>
+    </body>
 
+  </div>
 </div>
-</div>
+
 <footer class="columna-blanca">
   <p>Contact us!!!</p>
   <p>Mail: some.email@holaew.com</p>

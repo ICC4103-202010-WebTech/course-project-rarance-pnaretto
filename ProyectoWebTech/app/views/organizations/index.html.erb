@@ -5,43 +5,38 @@
 </head>
 
 <div class="columna-azul">
+  <div class="columna-blanca">
 
-<div class="columna-blanca">
+    <h1>Organizations</h1>
+    <h4>Your organizations</h4>
+    <% @organizations_own.each do |org| %>
+      <h3><%= org.name %></h3>
+      <img src=org alt="Organization image" style="with:500px; height:250px" border="2px">
+      <ul class="columna-blanca">
+        <li><%= org.name %></li>
+        <li><%= org.description %></li>
+        <li><%= org.created_at %></li>
+        <li><%= link_to 'Show', org %></li>
+      </ul>
+    <% end %>
+    <%= link_to 'New Organization', new_organization_path %>
+  </div>
 
-<h1>Organizations</h1>
-  <h4>Your organizations</h4>
-  <% @organizations_own.each do |org| %>
-    <h3><%= org.name %></h3>
-    <img src=org alt="Organization image" style="with:500px; height:250px">
-    <table class="columna-blanca">
-    <tbody clsas="columna-blanca">
-    <tr clsas="columna-blanca">
-      <td><%= org.name %></td>
-      <td><%= org.description %></td>
-      <td><%= org.created_at %></td>
-      <td><%= link_to 'Show', org %></td>
-    </tr>
-    </tbody>
-    </table>
+    <hr>
 
-  <% end %>
-  <%= link_to 'New Organization', new_organization_path %>
-</div>
-  <hr>
-<div class="columna-blanca">
-  <h4>Organizations where you participate</h4>
-  <% @organizations_invited.each do |org| %>
-    <h3><%= org.name %></h3>
-    <img src=org alt="Organization image" style="with:500px; height:250px" border="2px">
-    <ul class="columna-blanca">
-      <li><%= org.name %></li>
-      <li><%= org.description %></li>
-      <li><%= org.created_at %></li>
-      <li><%= link_to 'Show', org %></li>
-      </tr>
-    </ul>
-  <% end %>
+  <div class="columna-blanca">
+    <h4>Organizations where you participate</h4>
+    <% @organizations_invited.each do |org| %>
+      <h3><%= org.name %></h3>
+      <img src=org alt="Organization image" style="with:500px; height:250px" border="2px">
+      <ul class="columna-blanca">
+        <li><%= org.name %></li>
+        <li><%= org.description %></li>
+        <li><%= org.created_at %></li>
+        <li><%= link_to 'Show', org %></li>
+      </ul>
+    <% end %>
 
-</div>
+  </div>
 
 </div>

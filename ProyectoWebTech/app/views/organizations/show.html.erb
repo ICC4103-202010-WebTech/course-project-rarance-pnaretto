@@ -12,9 +12,23 @@
   <ul class="columna-blanca">
     <li>Owner: <%= @organization.user.name %></li>
     <li>Description: <%= @organization.description %></li>
+    <li><%= link_to 'Edit', edit_organization_path(@organization) %></li>
   </ul>
+  <h1>Organization Events</h1>
+  <% @public_events.each do |org_event| %>
+    <h2 class="columna-blanca"><%=Event.find(org_event.event_id).title %></h2>
+
+    <% unless Event.find(org_event.event_id).bannerPhoto == nil %>
+      <%=link_to image_tag(Event.find(org_event.event_id).bannerPhoto,style:"with:500px; height:250px", :alt => "rss feed"),Event.find(org_event.event_id) %>
+    <% end %>
+
+    <ul class="columna-blanca">
+      <li>Ubication: <%= Event.find(org_event.event_id).ubication %></li>
+      <li>User: <%= Event.find(org_event.event_id).user.name %></li>
+      <li><%= link_to 'Show', Event.find(org_event.event_id) %></li>
+    </ul>
+  <% end %>
 
 
-  <%= link_to 'Edit', edit_organization_path(@organization) %>
   <%= link_to 'Back', organizations_path %>
 </div>
