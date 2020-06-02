@@ -2,15 +2,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "pages#home"
 
-  resources :events do
-    resources :event_dates
-    resources :event_comments, shallow: true
-    resources :comment_comments
-  end
 
-  resources :comment_comments, shallow: true do
-    resources :comment_comment_reports, shallow: true
-  end
+  resources :comment_comments, defaults: { format: :html }
+  resources :event_comments, defaults: { format: :html }
 
   resources :event_comments, shallow: true do
     resources :comment_comments, shallow: true do
@@ -19,8 +13,19 @@ Rails.application.routes.draw do
     resources :event_comment_reports, shallow: true
   end
 
+  resources :comment_comments, shallow: true do
+    resources :comment_comment_reports, shallow: true
+  end
+
+  resources :events do
+    resources :event_dates
+    resources :event_comments, shallow: true
+    resources :comment_comments
+  end
+
+
   resources :organizations, shallow: true do
-    resources :orfanization_members, shallow: true
+    resources :organization_members, shallow: true
     resources :organization_files,shallow: true do
       resources :organization_file_reports, shallow:true
     end
@@ -38,10 +43,6 @@ Rails.application.routes.draw do
       resources :organization_reports, shallow: true
     end
     resources :events, shallow: true do
-      get :delete
-      member do
-        get :delete
-      end
       resources :comment_comments, shallow: true do
         resources :comment_comment_reports, shallow: true
       end
@@ -65,6 +66,9 @@ Rails.application.routes.draw do
         resources :comment_comment_reports, shallow: true
       end
       resources :event_comment_reports, shallow: true
+    end
+    resources :comment_comments, shallow: true do
+      resources :comment_comment_reports, shallow: true
     end
   end
   namespace :api, defaults: {format: :json} do
