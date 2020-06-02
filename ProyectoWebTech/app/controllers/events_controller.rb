@@ -61,7 +61,6 @@ class EventsController < ApplicationController
   # DELETE /events/1.json
   def destroy
     @event =Event.find(params[:id])
-    @event
     @event.destroy
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
@@ -84,7 +83,7 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.fetch(:event, {}).permit( :id, :title, :ubication, :description, :public, :decition, :min_vote, :start_voting, :finish_voting, :bannerphoto, :user_id, :event_id ,
+      params.fetch(:event, {}).permit( :id, :title, :ubication, :description, :public, :decition, :min_vote, :start_voting, :finish_voting, :bannerphoto, :user_id, :event_dates_id ,
                                        event_dates_attributes: [:id, :date, :_destroy])
     end
 end
