@@ -14,7 +14,7 @@ class CommentCommentsController < ApplicationController
 
   # GET /comment_comments/new
   def new
-    @comment_comment = CommentComment.new
+    @comment_comment = CommentComment.new()
   end
 
   # GET /comment_comments/1/edit
@@ -69,6 +69,7 @@ class CommentCommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def comment_comment_params
-      params.fetch(:comment_comment, {})
+      params.fetch(:comment_comment, {}).permit( :id, :title, :message, :description, :user_id, :event_comment_id ,
+                                                 event_dates_attributes: [:id, :date, :_destroy])
     end
 end

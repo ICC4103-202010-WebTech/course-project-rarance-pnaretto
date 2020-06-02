@@ -1,4 +1,4 @@
 class EventDate < ApplicationRecord
   belongs_to :event
-  has_many :event_date_votes
+  has_many :event_date_votes, dependent: :delete_all
 end
