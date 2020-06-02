@@ -1,20 +1,22 @@
-<p id="notice"><%= notice %></p>
+
 
 <head>
   <%= stylesheet_link_tag 'navigation', media:'all', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <div class="columna-blanca">
+  <p id="notice"><%= notice %></p>
   <h1>Your Profile</h1>
   <div class="linea-blanca">
-    <%= image_tag(@user.profile_photo,style:"with:500px; height:250px", :alt => "rss feed") %>
+    <% unless @user.profile_photo != "" %>
+      <%= image_tag(@user.profile_photo,style:"with:500px; height:250px", :alt => "rss feed") %>
+    <% end %>
       <ul class="columna-blanca">
         <li>Name: <%= @user.name %></li>
         <li>Email: <%= @user.email %></li>
         <li>Location: <%= @user.location %></li>
       </ul>
   </div>
-
 
 <%= link_to 'Edit', edit_user_path(@user) %>
 <%= link_to 'Back', root_path %>

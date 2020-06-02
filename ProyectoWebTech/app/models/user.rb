@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+
+  has_one_attached :photo
+
   has_many :events
   has_many :event_reports
   has_many :event_invitations

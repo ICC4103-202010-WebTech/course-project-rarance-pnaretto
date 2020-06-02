@@ -1,10 +1,19 @@
-<h1>Editing Organization</h1>
-<%= form_with(model: @organization, local: true) do |form| %>
-<div class="form-group">
-  <%= form.label :User %>
-  <%= form.collection_select :user_id, User.all, :id, :name, include_blank: true %>
+
+<head>
+  <%= stylesheet_link_tag 'navigation', media:'all', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<div class="columna-blanca">
+
+  <h1>Editing Organization</h1>
+  <%= form_with(model: @organization, local: true) do |form| %>
+  <div class="form-group">
+    <%= form.label :User %>
+    <%= form.collection_select :user_id, User.all, :id, :name, include_blank: true %>
+  </div>
+  <%= render 'form', organization: @organization %>
+  <% end %>
+  <%= link_to 'Show', @organization %>
+  <%= link_to 'Back', organizations_path %>
+
 </div>
-<%= render 'form', organization: @organization %>
-<% end %>
-<%= link_to 'Show', @organization %> |
-<%= link_to 'Back', organizations_path %>
