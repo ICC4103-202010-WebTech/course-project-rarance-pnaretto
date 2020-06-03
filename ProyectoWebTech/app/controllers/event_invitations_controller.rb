@@ -69,6 +69,6 @@ class EventInvitationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_invitation_params
-      params.fetch(:event_invitation, {})
+      params.fetch(:event_invitation, {}).permit(:event_id)
     end
 end

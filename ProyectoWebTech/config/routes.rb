@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   resources :comment_comments, defaults: { format: :html }
   resources :event_comments, defaults: { format: :html }
   resources :organizations, defaults: { format: :html }
+  resources :event_invitations, defaults: { format: :html }
+
+  resources :event_invitations do
+    resources :events
+  end
 
   resources :event_comments, shallow: true do
     resources :comment_comments, shallow: true do
@@ -22,6 +27,7 @@ Rails.application.routes.draw do
     resources :event_dates
     resources :event_comments, shallow: true
     resources :comment_comments
+    resources :event_invitations
   end
 
 

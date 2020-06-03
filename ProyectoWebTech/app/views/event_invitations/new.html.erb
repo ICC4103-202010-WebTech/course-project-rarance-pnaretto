@@ -1,5 +1,14 @@
-<h1>New Event Invitation</h1>
 
-<%= render 'form', event_invitation: @event_invitation %>
+<head>
+  <%= stylesheet_link_tag 'global', media:'all', 'data-turbolinks-track': 'reload' %>
+</head>
 
-<%= link_to 'Back', event_invitations_path %>
+<div class="columna-blanca" >
+
+  <h1>New Event Invitation</h1>
+
+  <%= render 'form', event_invitation: @event_invitation %>
+
+  <%= link_to 'Back', event_invitations_path %>
+
+</div>
