@@ -1,0 +1,27 @@
+<h1>Search</h1>
+<div class="columna-blanca">
+<%= form_for @search do |f| %>
+  <div class="field">
+    <%= f.label :userName %><br />
+    <%= f.text_field :userName %>
+  </div>
+  <div class="field">
+    <%= f.label :organization %><br />
+    <%= f.text_field :organization %>
+  </div>
+  <div class="field">
+    <%= f.label :event %><br />
+    <%= f.text_field :event %>
+  </div>
+  <div class="field">
+    <%= f.label :eventUser %><br />
+    <%= f.collection_select :eventUser, User.order(:name), :id, :name, include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :eventOrganization %><br />
+    <%= f.text_field :eventOrganization %>
+  </div>
+  <div class="actions"><%= f.submit "Search" %></div>
+</div>
+
+<%end %>

@@ -1,0 +1,42 @@
+<h1>Search Results</h1>
+<div class="columna-azul">
+  <div class="columna-blanca">
+    <h2>Events Result</h2>
+      <% unless @search.events == nil %>
+        <% @search.events.each do |event| %>
+          <tr class="columna-blanca">
+            <li> <%=link_to event.title, event_path(event) %></li>
+          </tr>
+        <%end %>
+      <%end %>
+      <% unless @search.events != nil %>
+        <h3>No hubo resultados</h3>
+      <%end %>
+      <ul class="columna-blanca">
+
+      </ul>
+    <h2>User Result</h2>
+    <% unless @search.users == nil %>
+      <% @search.users.each do |u| %>
+        <tr class="columna-blanca">
+          <li> <%=link_to u.name, user_path(u) %></li>
+        </tr>
+      <%end %>
+    <%end %>
+    <% unless @search.users != nil %>
+      <h3>No hubo resultados</h3>
+    <%end %>
+
+    <h2>Organizations Result</h2>
+    <% unless @search.organizations == nil %>
+      <% @search.organizations.each do |u| %>
+        <tr class="columna-blanca">
+          <li> <%=link_to u.name, organization_path(u) %></li>
+        </tr>
+      <%end %>
+    <%end %>
+    <% unless @search.organizations != nil %>
+      <h3>No hubo resultados</h3>
+    <%end %>
+  </div>
+</div>

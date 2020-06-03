@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :event_comments, defaults: { format: :html }
   resources :organizations, defaults: { format: :html }
   resources :event_invitations, defaults: { format: :html }
+  resources :events
+  resources :searches
 
   resources :event_invitations do
     resources :events
