@@ -3,7 +3,7 @@
   <%= stylesheet_link_tag 'global', media:'all', 'data-turbolinks-track': 'reload' %>
 </head>
 
-<div class = "linea-blanca">
+<div class = "columna-blanca">
   <div class="columna-blanca" >
     <p id="notice"><%= notice %></p>
 
@@ -29,7 +29,19 @@
     <div><%= link_to 'Edit', edit_event_path(@event) %></div>
 
     <div>
+      <h3>Vote for date</h3>
+      <div>
+        <ul>
+          <% @event.event_dates.each  do |event_date| %>
+            <%= form_for :event_date_votes, :url => {:controller => "event_date_votes", :action => "create"} do |event_date_votes_form|%>
 
+              <%= event_date_votes_form.text_field :user_id, value: 1, type: "hidden" %>
+              <%= event_date_votes_form.text_field :event_date_id, value: 1, type: "hidden" %>
+              <%= event_date_votes_form.submit(event_date.date) %>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
     </div>
 
     <h1>Comments</h1>
