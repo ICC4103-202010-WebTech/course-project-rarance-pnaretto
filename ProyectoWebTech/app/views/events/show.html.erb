@@ -109,8 +109,8 @@
         <il><%= invitation.user.name  %></il>
       <% end %>
     </ul>
-
-    <div><%= link_to 'Invite more people', new_event_invitation_path(@event) %></div>
+    <% $ev = @event.id %>
+    <div><%= link_to 'Invite more people', new_event_invitation_path() %></div>
 
   </dic>
 </div>

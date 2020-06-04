@@ -15,6 +15,7 @@ class EventInvitationsController < ApplicationController
   # GET /event_invitations/new
   def new
     @event_invitation = EventInvitation.new
+    @dato = params[:event]
   end
 
   # GET /event_invitations/1/edit
@@ -24,7 +25,7 @@ class EventInvitationsController < ApplicationController
   # POST /event_invitations
   # POST /event_invitations.json
   def create
-    @event_invitation = EventInvitation.new(event_invitation_params)
+    @event_invitation = EventInvitation.new(event_invitation_params.permit(:user_id,:event_id))
 
     respond_to do |format|
       if @event_invitation.save
@@ -69,6 +70,6 @@ class EventInvitationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_invitation_params
-      params.fetch(:event_invitation, {}).permit(:event_id)
+      params.fetch(:event_invitation, {}).permit(:event_id,:event,:user_id)
     end
 end
