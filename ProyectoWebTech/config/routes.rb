@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "pages#home"
 
-
+  resources :comment_comment_reports, defaults: { format: :html }
   resources :comment_comments, defaults: { format: :html }
   resources :event_comments, defaults: { format: :html }
   resources :organizations, defaults: { format: :html }
@@ -24,7 +24,12 @@ Rails.application.routes.draw do
   resources :comment_comments, shallow: true do
     resources :comment_comment_reports, shallow: true
   end
-
+  resources :event_comments, shallow: true do
+    resources :comment_comments, shallow: true do
+      resources :comment_comment_reports, shallow: true
+    end
+    resources :event_comment_reports, shallow: true
+  end
   resources :events do
     resources :event_dates
     resources :event_comments, shallow: true
@@ -44,7 +49,7 @@ Rails.application.routes.draw do
 
   resources :crud do
     resources :organizations, shallow: true do
-      resources :orfanization_members, shallow: true
+      resources :organization_members, shallow: true
       resources :organization_files,shallow: true do
         resources :organization_file_reports, shallow:true
       end
@@ -108,7 +113,7 @@ Rails.application.routes.draw do
         resources :event_reports, shallow: true
       end
       resources :organizations, shallow: true do
-        resources :orfanization_members, shallow: true
+        resources :organization_members, shallow: true
         resources :organization_files,shallow: true do
           resources :organization_file_reports, shallow:true
         end

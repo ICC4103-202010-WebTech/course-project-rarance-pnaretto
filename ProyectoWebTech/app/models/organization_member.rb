@@ -1,4 +1,4 @@
 class OrganizationMember < ApplicationRecord
-  belongs_to :organization
-  belongs_to :user
+  belongs_to :organization, optional: true
+  belongs_to :user, optional: true
 end

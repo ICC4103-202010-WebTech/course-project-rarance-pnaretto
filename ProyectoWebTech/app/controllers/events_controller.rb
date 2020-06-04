@@ -60,7 +60,6 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
-    @event =Event.find(params[:id])
     @event.destroy
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
@@ -68,7 +67,6 @@ class EventsController < ApplicationController
     end
   end
   def delete
-    @event =Event.find(params[:event_id])
     @event.delete
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }

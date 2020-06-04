@@ -1,4 +1,4 @@
 class EventFileReport < ApplicationRecord
-  belongs_to :event_file
-  belongs_to :user
+  belongs_to :event_file, optional: true
+  belongs_to :user, optional: true
 end
