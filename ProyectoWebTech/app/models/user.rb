@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-  has_one_attached :photo
+  has_one_attached :profile_photo, dependent: :delete_all
 
   has_many :events
   has_many :event_reports

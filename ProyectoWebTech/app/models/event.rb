@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
 
-  has_one_attached :bannerphoto, dependent: :delete_all
+  has_one_attached :event_banner_photo, dependent: :delete_all
 
   belongs_to :user, optional: true
   has_many :event_invitations , dependent: :delete_all

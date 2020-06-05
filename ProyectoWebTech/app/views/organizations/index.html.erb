@@ -11,7 +11,9 @@
     <h4>Your organizations</h4>
     <% @organizations_own.each do |org| %>
       <h3><%= org.name %></h3>
-      <img src=org alt="Organization image" style="with:500px; height:250px" border="2px">
+      <% unless @user.photo.attached? == false %>
+        <%= image_tag(url_for(@user.photo),wide: "400",height: "400") %>
+      <% end %>
       <ul class="columna-blanca">
         <li><%= org.name %></li>
         <li><%= org.description %></li>
