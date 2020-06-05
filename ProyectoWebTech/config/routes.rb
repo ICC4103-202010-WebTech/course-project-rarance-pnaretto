@@ -141,6 +141,6 @@ Rails.application.routes.draw do
   resources :organization_members, defaults: { format: :html }
   resources :organization_reports, defaults: { format: :html }
   resources :users, defaults: { format: :html }
-  resources :users_reports, defaults: { format: :html }
+  resources :user_reports, defaults: { format: :html }
 
 end
