@@ -12,8 +12,8 @@
 
   <h2 class="columna-blanca"><%=event.title %></h2>
 
-    <% unless event.bannerPhoto == nil %>
-      <%=link_to image_tag(event.bannerPhoto,style:"with:500px; height:250px", :alt => "rss feed"),event %>
+    <% unless event.event_banner_photo.attached? == false %>
+      <%= image_tag(url_for(event.event_banner_photo),wide: "400",height: "400") %>
     <% end %>
 
     <ul class="columna-blanca">
@@ -32,9 +32,9 @@
 
   <% @events_invited.each do |event| %>
     <h2><%=event.title %></h2>
-    <% unless event.bannerPhoto == nil %>
-    <%= image_tag(event.bannerPhoto,style:"with:500px; height:250px", :alt => "rss feed") %>
-    <% end %>
+      <% unless event.event_banner_photo.attached? == false %>
+        <%= image_tag(url_for(event.event_banner_photo),wide: "400",height: "400") %>
+      <% end %>
     <ul class="columna-blanca">
       <li>Ubication: <%= event.ubication %></li>
       <li>User: <%= event.user.name %></li>

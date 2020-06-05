@@ -6,8 +6,10 @@
 <div class="columna-blanca">
   <p id="notice"><%= notice %></p>
 
-  <h1><%=@organization.name %></h1>z
-  <img src=org alt="Organization image" style="with:500px; height:250px" border="2px">
+  <h1><%=@organization.name %></h1>
+  <% unless @organization.organization_banner_photo.attached? == false %>
+    <%= image_tag(url_for(@organization.organization_banner_photo),wide: "400",height: "400") %>
+  <% end %>
 
   <ul class="columna-blanca">
     <li>Owner: <%= @organization.user.name %></li>
@@ -18,8 +20,8 @@
   <% @public_events.each do |org_event| %>
     <h2 class="columna-blanca"><%=Event.find(org_event.event_id).title %></h2>
 
-    <% unless Event.find(org_event.event_id).bannerPhoto == nil %>
-      <%=link_to image_tag(Event.find(org_event.event_id).bannerPhoto,style:"with:500px; height:250px", :alt => "rss feed"),Event.find(org_event.event_id) %>
+    <% unless Event.find(org_event.event_id).event_banner_photo.attached? == false %>
+      <%= image_tag(url_for(Event.find(org_event.event_id).event_banner_photo),wide: "400",height: "400") %>
     <% end %>
 
     <ul class="columna-blanca">

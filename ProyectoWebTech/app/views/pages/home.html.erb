@@ -8,16 +8,18 @@
 <hr>
 <h3>Upcoming events!!!</h3>
 
-  <% @user_events.each  do |v| %>
+  <% @user_events.each  do |event| %>
     <hr>
-    <h2><%= v.title%></h2>
-    <%= image_tag(v.bannerPhoto,style:"with:500px; height:250px", :alt => "rss feed") %>
+    <h2><%= event.title%></h2>
+    <% unless event.event_banner_photo.attached? == false %>
+      <%= image_tag(url_for(event.event_banner_photo),wide: "400",height: "400") %>
+    <% end %>
 
   <table>
     <tr class="columna-blanca">
-      <td>Ubication: <%= v.ubication %></td>
-      <td>Owner: <%= v.user.name %></td>
-      <td><%= link_to 'Show', v %></td>
+      <td>Ubication: <%= event.ubication %></td>
+      <td>Owner: <%= event.user.name %></td>
+      <td><%= link_to 'Show', event %></td>
     </tr>
   </table>
     <hr color="black">
