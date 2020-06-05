@@ -1,12 +1,14 @@
 # README
-### `Project delivery 2 Pedro Naretto and Roberto Arance`
-`In this document we will answer the three las questions asked for the delivery, to see the queries we recomend you to run the following commands:`
+### `Project delivery 3 Pedro Naretto and Roberto Arance`
+`Before running is important to run the following commands (we didnt use the populate fake data, we like the oldschool style):`
 
-`_rake db:reset_`
+`rake db:reset` `rake db:seed`
 
-`To run the postman requests is needed to open the http://localhost:3000 two times(we couldn fix this error)`
+`To delete the events is needed to erase all the comments, this error was posted on the forum but we could not resolve it.`
 
-`The Postman link:`
+IMPORTANT
+
+`To do the crud opreations is needed to acces to "ADMIN" and then click on the button of system management, it is all done on the same page. Images cannot be seen at the beggining becouse these must be uploaded in situ. We tried in many ways to use bootstrap but it didn't work, so the page may be a little bit ugly, we hope you might understand that this problem defeated us.`
+
+`We hope that you enjoy our page!`
 ###
-
-https://www.getpostman.com/collections/6df548ce5dd94413de13
