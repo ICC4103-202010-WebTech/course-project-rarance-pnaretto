@@ -1,6 +1,11 @@
-<h1>Search Results</h1>
+
+<head>
+  <%= stylesheet_link_tag 'global', media:'all', 'data-turbolinks-track': 'reload' %>
+</head>
+
 <div class="columna-azul">
   <div class="columna-blanca">
+    <h1>Search Results</h1>
     <h2>Events Result</h2>
       <% unless @search.events == nil %>
         <% @search.events.each do |event| %>
@@ -12,9 +17,9 @@
       <% unless @search.events != nil %>
         <h3>No hubo resultados</h3>
       <%end %>
-      <ul class="columna-blanca">
+  </div>
 
-      </ul>
+  <div class="columna-blanca">
     <h2>User Result</h2>
     <% unless @search.users == nil %>
       <% @search.users.each do |u| %>
@@ -26,7 +31,8 @@
     <% unless @search.users != nil %>
       <h3>No hubo resultados</h3>
     <%end %>
-
+  </div>
+  <div class="columna-blanca">
     <h2>Organizations Result</h2>
     <% unless @search.organizations == nil %>
       <% @search.organizations.each do |u| %>

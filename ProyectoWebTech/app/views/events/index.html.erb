@@ -27,8 +27,7 @@
 
 </div>
   <div class="columna-blanca">
-<table>
-  <tbody>
+
   <h2>Event where you are invited</h2>
 
   <% @events_invited.each do |event| %>
@@ -36,14 +35,13 @@
     <% unless event.bannerPhoto == nil %>
     <%= image_tag(event.bannerPhoto,style:"with:500px; height:250px", :alt => "rss feed") %>
     <% end %>
-    <tr class="columna-blanca">
-      <td>Ubication: <%= event.ubication %></td>
-      <td>User: <%= event.user.name %></td>
-      <td><%= link_to 'Show', event %></td>
-    </tr>
+    <ul class="columna-blanca">
+      <li>Ubication: <%= event.ubication %></li>
+      <li>User: <%= event.user.name %></li>
+      <li><%= link_to 'Show', event %></li>
+    </ul>
   <% end %>
-  </tbody>
-</table>
+
 <br>
 
 </div>
