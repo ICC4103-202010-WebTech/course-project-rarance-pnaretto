@@ -76,8 +76,8 @@
           <tr>
             <%= form_for :comment_comment, :url => {:controller => "comment_comments", :action => "create"} do |comment_comment_form|%>
 
-              <%= comment_comment_form.number_field :user, value: User.first, type: "hidden" %>
-              <%= comment_comment_form.number_field :event_comment, value: comment, type: "hidden" %>
+              <%= comment_comment_form.text_field :user_id, value: User.first.id, type: "hidden" %>
+              <%= comment_comment_form.text_field :event_comment_id, value: comment.id, type: "hidden" %>
 
             <tr class="form-group">
               <td></td>
