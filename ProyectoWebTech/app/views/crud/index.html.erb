@@ -15,6 +15,7 @@
       <li>User: <%= event.user.name %></li>
       <li><%= link_to 'Show', event %></li>
       <li><%= link_to 'Edit', edit_event_path(event) %></li>
+      <li><%= button_to 'Destroy', event_path(event) , method: :delete%></li>
     </ul>
   <% end %>
 

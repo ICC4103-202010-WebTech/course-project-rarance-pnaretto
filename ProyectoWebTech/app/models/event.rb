@@ -2,7 +2,7 @@ class Event < ApplicationRecord
 
   has_one_attached :bannerphoto
 
-  belongs_to :user
+  belongs_to :user, optional: true
   has_many :event_invitations , dependent: :delete_all
   has_many :event_dates , dependent: :delete_all
   has_many :date_notifications , dependent: :delete_all

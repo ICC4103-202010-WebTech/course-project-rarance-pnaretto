@@ -1,5 +1,5 @@
 class CommentComment < ApplicationRecord
-  belongs_to :event_comment
-  belongs_to :user
-  has_many :comment_comment_reports
+  belongs_to :event_comment, optional: true
+  belongs_to :user, optional: true
+  has_many :comment_comment_reports, dependent: :delete_all
 end

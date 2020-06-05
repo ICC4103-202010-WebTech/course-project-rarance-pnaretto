@@ -1,4 +1,4 @@
 class OrganizationEvent < ApplicationRecord
-  belongs_to :event
-  belongs_to :organization
+  belongs_to :event, optional: true
+  belongs_to :organization, optional: true
 end
