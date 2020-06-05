@@ -24,7 +24,7 @@ class EventDateVotesController < ApplicationController
   # POST /event_date_votes
   # POST /event_date_votes.json
   def create
-    @event_date_vote = EventDateVote.new(event_date_vote_params)
+    @event_date_vote = EventDateVote.new(event_date_vote_params.permit(:id, :user_id, :event_date_id))
 
     respond_to do |format|
       if @event_date_vote.save
@@ -69,6 +69,6 @@ class EventDateVotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_date_vote_params
-      params.fetch(:event_date_vote, {})
+      params.fetch(:event_date_vote, {}).permit(:id, :user_id, :event_date_id)
     end
 end

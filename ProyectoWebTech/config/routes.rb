@@ -26,7 +26,9 @@ Rails.application.routes.draw do
   end
 
   resources :events do
-    resources :event_dates
+    resources :event_dates do
+      resources :event_date_votes
+    end
     resources :event_comments, shallow: true
     resources :comment_comments
     resources :event_invitations
