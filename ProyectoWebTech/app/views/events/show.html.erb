@@ -8,8 +8,8 @@
     <p id="notice"><%= notice %></p>
 
     <h1><%=@event.title %></h1>
-    <% unless @event.bannerPhoto == nil %>
-    <%= image_tag(@event.bannerPhoto,style:"with:500px; height:250px", :alt => "rss feed") %>
+    <% unless @event.event_banner_photo.attached? == false %>
+      <%= image_tag(url_for(@event.event_banner_photo),wide: "400",height: "400") %>
     <% end %>
     <ul class="columna-blanca">
       <il>

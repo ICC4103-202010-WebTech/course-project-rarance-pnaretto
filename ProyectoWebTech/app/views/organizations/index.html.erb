@@ -11,8 +11,8 @@
     <h4>Your organizations</h4>
     <% @organizations_own.each do |org| %>
       <h3><%= org.name %></h3>
-      <% unless @organizations_own.organization_banner_photo.attached? == false %>
-        <%= image_tag(url_for(@organizations_own.organization_banner_photo),wide: "400",height: "400") %>
+      <% unless org.organization_banner_photo.attached? == false %>
+        <%= image_tag(url_for(org.organization_banner_photo),wide: "400",height: "400") %>
       <% end %>
       <ul class="columna-blanca">
         <li><%= org.name %></li>
@@ -30,8 +30,8 @@
     <h4>Organizations where you participate</h4>
     <% @organizations_invited.each do |org| %>
       <h3><%= org.name %></h3>
-      <% unless @organizations_invited.organization_banner_photo.attached? == false %>
-        <%= image_tag(url_for(@organizations_invited.organization_banner_photo),wide: "400",height: "400") %>
+      <% unless org.organization_banner_photo.attached? == false %>
+        <%= image_tag(url_for(org.organization_banner_photo),wide: "400",height: "400") %>
       <% end %>
       <ul class="columna-blanca">
         <li><%= org.name %></li>
