@@ -6,7 +6,7 @@
 
 <div class="columna-blanca">
   <p id="notice"><%= notice %></p>
-  <h1>Your Profile</h1>
+  <h1><%= @user.name %>'s Profile</h1>
   <div class="linea-blanca">
     <% unless @user.profile_photo.attached? == false %>
       <%= image_tag(url_for(@user.profile_photo),wide: "400",height: "400") %>

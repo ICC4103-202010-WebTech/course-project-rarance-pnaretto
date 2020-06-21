@@ -8,6 +8,7 @@ class CrudController < ApplicationController
     @events =  Event.all
     @comments =  Event.all
     @organizations =  Organization.all
+    @users = User.all
 
 
   end
