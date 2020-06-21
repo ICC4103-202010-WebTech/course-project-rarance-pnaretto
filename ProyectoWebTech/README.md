@@ -2,7 +2,7 @@
 ### `Project delivery 3 Pedro Naretto and Roberto Arance`
 `Before running is important to run the following commands (we didnt use the populate fake data, we like the oldschool style):`
 
-`rake db:reset` `rake db:seed`
+`rake db:reset` `rake db:seed` 
 
 `To delete the events is needed to erase all the comments, this error was posted on the forum but we could not resolve it.`
 

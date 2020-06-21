@@ -15,17 +15,17 @@
 # o1.save
 # o2.save
 
-u1=User.create(name: 'Mario' ,  email: 'mario@nintendo.com' , password:'PrincessPeach' , profile_photo:'image.jpg' , location:'sunshine' , admin: true)
-u2=User.create(name: 'Luigi' ,  email: 'Luigi@nintendo.com' , password:'PrincessDaisy' , profile_photo:'image.jpg' , location:'sunshine' , admin: false)
-u3=User.create(name: 'Bowser' ,  email: 'Bowser@nintendo.com' , password:'conquer' , profile_photo:'image.jpg' , location:'sunshine' , admin: false)
-u4=User.create(name: 'Waluigi' ,  email: 'WAAA@nintendo.com' , password:'TheBest' , profile_photo:'image.jpg' , location:'NotSmash' , admin: false)
+u1=User.create(name: 'Mario' ,  email: 'mario@nintendo.com' , password:'PrincessPeach'  , location:'sunshine' , admin: true)
+u2=User.create(name: 'Luigi' ,  email: 'Luigi@nintendo.com' , password:'PrincessDaisy'  , location:'sunshine' , admin: false)
+u3=User.create(name: 'Bowser' ,  email: 'Bowser@nintendo.com' , password:'conquer'  , location:'sunshine' , admin: false)
+u4=User.create(name: 'Waluigi' ,  email: 'WAAA@nintendo.com' , password:'TheBest'  , location:'NotSmash' , admin: false)
 
-e1=Event.create(title: 'Save Peach', ubication: 'Bowser castle', description: 'The title explains itself dude', bannerPhoto: 'EpicMarioPhoto.jpg', public: true, decition: "Designed", min_vote: 1, start_voting: nil, finish_voting: nil, user:u1)
-e2=Event.create(title: 'Save Daisy', ubication: 'Other Bowser castle', description: 'The title explains itself dude', bannerPhoto: 'EpicLuigiPhoto.jpg', public: true, decition: "Designed", min_vote: 1, start_voting: nil, finish_voting: nil, user:u2)
-e3=Event.create(title: 'Cool fire show', ubication: 'Bowser castle backyard', description: 'The title explains itself dude', bannerPhoto: 'EpicMarioPhoto.jpg', public: true, decition: "Designed", min_vote: 1, start_voting: nil, finish_voting: nil, user:u3)
+e1=Event.create(title: 'Save Peach', ubication: 'Bowser castle', description: 'The title explains itself dude', public: true, decition: "Designed", min_vote: 1, start_voting: nil, finish_voting: nil, user:u1)
+e2=Event.create(title: 'Save Daisy', ubication: 'Other Bowser castle', description: 'The title explains itself dude', public: true, decition: "Designed", min_vote: 1, start_voting: nil, finish_voting: nil, user:u2)
+e3=Event.create(title: 'Cool fire show', ubication: 'Bowser castle backyard', description: 'The title explains itself dude', public: true, decition: "Designed", min_vote: 1, start_voting: nil, finish_voting: nil, user:u3)
 
-o1=Organization.create(name: "The good guys", description: "Jumping brothers desiring to achieve the best italian justice in an absurd world", banner_photo: "Mario&Luigi.jpg", created_at: nil, updated_at: nil, user: u2)
-o2=Organization.create(name: "The cool guys", description: "We have Waluigi", banner_photo: "WaLuigi.jpg", created_at: nil, updated_at: nil, user: u3)
+o1=Organization.create(name: "The good guys", description: "Jumping brothers desiring to achieve the best italian justice in an absurd world", created_at: nil, updated_at: nil, user: u2)
+o2=Organization.create(name: "The cool guys", description: "We have Waluigi", created_at: nil, updated_at: nil, user: u3)
 
 u1o1=OrganizationMember.create(user: u1,organization: o1)
 u2o1=OrganizationMember.create(user: u2,organization: o1)
