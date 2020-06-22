@@ -17,19 +17,32 @@
 
   <div class="linea-azul">
 
-    <aside>
-      <ul class="columna-azul">
-        <li class="item"><%= link_to 'Profile', User.first %></li>
-        <li class="item"><%= link_to 'Events', events_path %></li>
-        <li class="item"><%= link_to 'Organizations', organizations_path %></li>
-        <li class="item"><%= link_to 'Admin', "http://localhost:3000/admin" %></li>
-        <li class="item"><%= link_to 'Search', new_search_path%></li>
-      </ul>
-    </aside>
+    <%if user_signed_in? %>
+      <aside>
+        <ul class="columna-azul">
+          <li class="item"><%= link_to 'Profile', User.first %></li>
+          <li class="item"><%= link_to 'Events', events_path %></li>
+          <li class="item"><%= link_to 'Organizations', organizations_path %></li>
+          <li class="item"><%= link_to 'Admin', "http://localhost:3000/admin" %></li>
+          <li class="item"><%= link_to 'Search', new_search_path%></li>
+          <li class="item"><%= link_to 'Sign out', destroy_user_session_path, :method => "delete"%></li>
+        </ul>
+      </aside>
+
+    <% else %>
+      <aside>
+        <ul class="columna-azul">
+          <li class="item"><%= link_to "Sign in", user_session_path, class: ["btn", "btn-primary"] %></li>
+          <li class="item"><%= link_to "Sign up", href="/users/sign_up", class: ["btn", "btn-primary"] %></li>
+        </ul>
+      </aside>
+    <% end %>
 
     <body>
-      <%= yield %>
+
+    <%= yield %>
     </body>
+
 
   </div>
 </div>

@@ -1,48 +1,46 @@
-<p id="notice"><%= notice %></p>
-
 <head>
   <%= stylesheet_link_tag 'global', media:'all', 'data-turbolinks-track': 'reload' %>
 </head>
 <div class="columna-azul">
-<div class="columna-blanca">
-
-  <h1 class="center">Events</h1>
-  <h2>Your events</h2>
-  <% @events_own.each do |event| %>
-
-  <h2 class="columna-blanca"><%=event.title %></h2>
-
-    <% unless event.event_banner_photo.attached? == false %>
-      <%= image_tag(url_for(event.event_banner_photo),wide: "400",height: "400") %>
-    <% end %>
-
-    <ul class="columna-blanca">
-      <li>Ubication: <%= event.ubication %></li>
-      <li>User: <%= event.user.name %></li>
-      <li><%= link_to 'Show', event %></li>
-    </ul>
-  <% end %>
-
-  <%= link_to 'New Event', new_event_path %>
-
-</div>
   <div class="columna-blanca">
 
-  <h2>Event where you are invited</h2>
+    <h1 class="center">Events</h1>
+    <h2>Your events</h2>
+    <% @events_own.each do |event| %>
 
-  <% @events_invited.each do |event| %>
-    <h2><%=event.title %></h2>
+      <h2 class="columna-blanca"><%=event.title %></h2>
+
       <% unless event.event_banner_photo.attached? == false %>
         <%= image_tag(url_for(event.event_banner_photo),wide: "400",height: "400") %>
       <% end %>
-    <ul class="columna-blanca">
-      <li>Ubication: <%= event.ubication %></li>
-      <li>User: <%= event.user.name %></li>
-      <li><%= link_to 'Show', event %></li>
-    </ul>
-  <% end %>
 
-<br>
+      <ul class="columna-blanca">
+        <li>Ubication: <%= event.ubication %></li>
+        <li>User: <%= event.user.name %></li>
+        <li><%= link_to 'Show', event %></li>
+      </ul>
+    <% end %>
 
-</div>
+    <%= link_to 'New Event', new_event_path %>
+
+  </div>
+  <div class="columna-blanca">
+
+    <h2>Event where you are invited</h2>
+
+    <% @events_invited.each do |event| %>
+      <h2><%=event.title %></h2>
+      <% unless event.event_banner_photo.attached? == false %>
+        <%= image_tag(url_for(event.event_banner_photo),wide: "400",height: "400") %>
+      <% end %>
+      <ul class="columna-blanca">
+        <li>Ubication: <%= event.ubication %></li>
+        <li>User: <%= event.user.name %></li>
+        <li><%= link_to 'Show', event %></li>
+      </ul>
+    <% end %>
+
+    <br>
+
+  </div>
 </div>

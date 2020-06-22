@@ -4,24 +4,29 @@
   <%= stylesheet_link_tag 'global', media:'all', 'data-turbolinks-track': 'reload' %>
 </head>
 
-<div class="columna-blanca" style="with:2000px">
-<hr>
-<h3>Upcoming events!!!</h3>
-
-  <% @user_events.each  do |event| %>
+<%if user_signed_in?%>
+  <div class="columna-blanca" style="with:2000px">
     <hr>
-    <h2><%= event.title%></h2>
-    <% unless event.event_banner_photo.attached? == false %>
-      <%= image_tag(url_for(event.event_banner_photo),wide: "400",height: "400") %>
-    <% end %>
+    <h3>Upcoming events!!!</h3>
 
-  <table>
-    <tr class="columna-blanca">
-      <td>Ubication: <%= event.ubication %></td>
-      <td>Owner: <%= event.user.name %></td>
-      <td><%= link_to 'Show', event %></td>
-    </tr>
-  </table>
-    <hr color="black">
-  <% end %>
-</div>
+
+    <% @user_events.each  do |event| %>
+      <hr>
+      <h2><%= event.title%></h2>
+      <% unless event.event_banner_photo.attached? == false %>
+        <%= image_tag(url_for(event.event_banner_photo),wide: "400",height: "400") %>
+      <% end %>
+
+      <table>
+        <tr class="columna-blanca">
+          <td>Ubication: <%= event.ubication %></td>
+          <td>Owner: <%= event.user.name %></td>
+          <td><%= link_to 'Show', event %></td>
+        </tr>
+      </table>
+      <hr color="black">
+    <% end %>
+  </div>
+<% else %>
+  <h1> Please sign in or sing up to see the content</h1>
+<% end %>
