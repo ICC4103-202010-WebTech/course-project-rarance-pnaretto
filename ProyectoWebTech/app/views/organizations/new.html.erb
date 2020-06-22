@@ -6,7 +6,7 @@
 <div class="columna-blanca">
 
   <h1>New Organization</h1>
-  <%= form_with(model: @organizatio, local: true) do |form| %>
+  <%= form_with(model: @organization, local: true) do |form| %>
   <%= form.text_field :user_id, value: User.first.id, type: "hidden" %>
   <%= render 'form', organization: @organization %>
   <% end %>

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :event_invitations, defaults: { format: :html }
   resources :events
   resources :searches
+  resources :organizations
 
 
   resources :event_invitations do
@@ -49,7 +50,7 @@ Rails.application.routes.draw do
   end
 
 
-  resources :organizations, shallow: true do
+  resources :organizations do
     resources :organization_members, shallow: true
     resources :organization_files,shallow: true do
       resources :organization_file_reports, shallow:true
