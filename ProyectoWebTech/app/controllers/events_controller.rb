@@ -4,8 +4,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events_invited =  Event.joins(:event_invitations).where(event_invitations:{user_id: 1})
-    @events_own = Event.where(user_id: 1)
+    @events_invited =  Event.joins(:event_invitations).where(event_invitations:{user_id: current_user})
+    @events_own = Event.where(user_id: current_user)
 
   end
 
