@@ -12,30 +12,30 @@
       </div>
     <% end %>
 
-    <%= form.hidden_field :user_id, value: User.first.id %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
 
     <div class="form-group">
-      <%= form.label :title %>
+      <%= form.label :title %><br />
       <%= form.text_field :title, class: "form-control" %>
     </div>
     <div class="form-group">
-      <%= form.label :ubication %>
+      <%= form.label :ubication %><br />
       <%= form.text_area :ubication, class: "form-control" %>
     </div>
     <div class="form-group">
-      <%= form.label :description %>
+      <%= form.label :description %><br />
       <%= form.text_area :description %>
     </div>
     <div class="form-group">
-      <%= form.label :decition %>
+      <%= form.label :decition %><br />
       <%= form.select :decition, [["Your choise",1], ["Date with most votes",2]] %>
     </div>
     <div class="form-group">
-      <%= form.label :event_banner_photo %>
+      <%= form.label :event_banner_photo %><br />
       <%= form.file_field :event_banner_photo, class: "form-control" %>
     </div>
     <div class="form-group">
-      <%= form.label :public %>
+      <%= form.label :public %><br />
       <%= form.select :public, [["Public",1], ["Private",2]] %>
     </div>
     <div class="card">
@@ -44,7 +44,7 @@
         <p>You need to add a event date to your newly created event</p>
         <%=form.fields_for :event_dates do |event_dates_form| %>
           <div class="form-group">
-            <%= event_dates_form.label :date %>
+            <%= event_dates_form.label :date %><br />
             <%= event_dates_form.datetime_local_field :date, class: "form-control" %>
             <% if action_name == 'edit' %>
               <%= event_dates_form.label "Delete"%>
