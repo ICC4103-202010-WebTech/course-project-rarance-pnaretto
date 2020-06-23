@@ -6,20 +6,20 @@ class User < ApplicationRecord
 
   has_one_attached :profile_photo, dependent: :delete_all
 
-  has_many :events
-  has_many :event_reports
-  has_many :event_invitations
-  has_many :event_date_votes
-  has_many :date_notifications
-  has_many :event_comments
-  has_many :event_comment_reports
-  has_many :comment_comments
-  has_many :comment_comment_reports
-  has_many :event_file_reports
-  has_many :organizations
-  has_many :organization_reports
-  has_many :organization_members
-  has_many :organization_file_reports
+  has_many :events, dependent: :destroy
+  has_many :event_reports, dependent: :destroy
+  has_many :event_invitations, dependent: :destroy
+  has_many :event_date_votes, dependent: :destroy
+  has_many :date_notifications, dependent: :destroy
+  has_many :event_comments, dependent: :destroy
+  has_many :event_comment_reports, dependent: :destroy
+  has_many :comment_comments, dependent: :destroy
+  has_many :comment_comment_reports, dependent: :destroy
+  has_many :event_file_reports, dependent: :destroy
+  has_many :organizations, dependent: :destroy
+  has_many :organization_reports, dependent: :destroy
+  has_many :organization_members, dependent: :destroy
+  has_many :organization_file_reports, dependent: :destroy
 
   validates :email, :name, :password, presence: true
   validates :email, uniqueness: true
@@ -34,7 +34,7 @@ class User < ApplicationRecord
     unless user
         user = User.create(name: data['name'],
            email: data['email'],
-           password: Devise.friendly_token[0,20]
+           password: data['email']
         )
     end
     user
