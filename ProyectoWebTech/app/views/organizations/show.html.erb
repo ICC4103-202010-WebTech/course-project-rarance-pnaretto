@@ -14,7 +14,9 @@
   <ul class="columna-blanca">
     <li>Owner: <%= @organization.user.name %></li>
     <li>Description: <%= @organization.description %></li>
-    <li><%= link_to 'Edit', edit_organization_path(@organization) %></li>
+    <%if current_user.id == @organization.user.id %>
+      <li><%= link_to 'Edit', edit_event_path(@event) %></li>
+    <% end %>
   </ul>
   <h1>Organization Events</h1>
   <% @public_events.each do |org_event| %>

@@ -29,7 +29,7 @@ class EventCommentsController < ApplicationController
 
     respond_to do |format|
       if @event_comment.save
-        format.html { redirect_to @event_comment, notice: 'Event comment was successfully created.' }
+        format.html { redirect_back(fallback_location: root_path) }
         format.json { render :show, status: :created, location: @event_comment }
       else
         format.html { render :new }

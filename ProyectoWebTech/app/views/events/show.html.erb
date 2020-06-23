@@ -26,7 +26,7 @@
       </il>
     </ul>
 
-    <%if current_user.id = @event.user.id %>
+    <%if current_user.id == @event.user.id %>
       <div><%= link_to 'Edit', edit_event_path(@event) %></div>
     <% end %>
 
