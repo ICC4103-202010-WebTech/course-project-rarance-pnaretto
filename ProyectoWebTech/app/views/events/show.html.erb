@@ -35,15 +35,27 @@
       <div>
         <ul>
           <% @event.event_dates.each  do |event_date| %>
-            <%= form_for :event_date_votes, :url => {:controller => "event_date_votes", :action => "create"} do |event_date_votes_form|%>
+            <%= form_for :event_date_vote, :url => {:controller => "event_date_votes", :action => "create"} do |event_date_votes_form|%>
 
               <%= event_date_votes_form.text_field :user_id, value: current_user.id, type: "hidden" %>
               <%= event_date_votes_form.text_field :event_date_id, value: event_date.id, type: "hidden" %>
-              <tr class="form-group">
+              <li class="form-group">
                 <%= event_date_votes_form.submit(event_date.date) %>
-              </tr>
+              </li>
             <% end %>
           <% end %>
+          <li>
+            <%= form_for :event_date, :url => {:controller => "event_dates", :action => "create"} do |event_dates_form|%>
+
+              <%= event_dates_form.text_field :event_id, value: @event.id, type: "hidden" %>
+
+              <div class="form-group">
+                <%= event_dates_form.label :date %><br />
+                <%= event_dates_form.datetime_local_field :date, class: "form-control" %>
+                <%= event_dates_form.submit('Add') %>
+              </div>
+            <% end %>
+          </li>
         </ul>
       </div>
     </div>
