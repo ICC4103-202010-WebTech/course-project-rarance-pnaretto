@@ -7,15 +7,12 @@ class Ability
 
     if user.present?
       # Admin users should be able to manage all
-      if user.class.name == "Admin"
+      if user.admin
         can :manage, :all
 
-      elsif user.class.name == "Customer"
+      else
         can :manage, Event, user_id: user.id
         can :manage, Organization, id: user.id
-        can :read, Event
-
-      else
         can :read, Event
 
       end
