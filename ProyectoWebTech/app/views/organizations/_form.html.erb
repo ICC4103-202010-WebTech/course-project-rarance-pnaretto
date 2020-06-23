@@ -15,15 +15,15 @@
   <%= form.hidden_field :user_id, value: current_user.id %>
 
   <div class="form-group">
-    <%= form.label :name %>
+    <%= form.label :name %> <br/>
     <%= form.text_field :name, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= form.label :description %>
+    <%= form.label :description %><br/>
     <%= form.text_area :description, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= form.label :organization_banner_photo %>
+    <%= form.label :organization_banner_photo %><br/>
     <%= form.file_field :organization_banner_photo, class: "form-control" %>
   </div>
   <div class="actions">

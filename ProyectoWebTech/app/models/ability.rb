@@ -4,6 +4,24 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+
+    if user.present?
+      # Admin users should be able to manage all
+      if user.class.name == "Admin"
+        can :manage, :all
+
+      elsif user.class.name == "Customer"
+        can :manage, Event, user_id: user.id
+        can :manage, Organization, id: user.id
+        can :read, Event
+
+      else
+        can :read, Event
+
+      end
+
+    end
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
