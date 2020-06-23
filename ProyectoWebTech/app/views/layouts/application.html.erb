@@ -20,12 +20,12 @@
     <%if user_signed_in? %>
       <aside>
         <ul class="columna-azul">
+          <%if current_user.admin %>
+            <li class="item"><%= link_to 'Admin', "http://localhost:3000/admin" %></li>
+          <% end %>
           <li class="item"><%= link_to 'Profile', current_user %></li>
           <li class="item"><%= link_to 'Events', events_path %></li>
           <li class="item"><%= link_to 'Organizations', organizations_path %></li>
-          <%if current_user.admin %>
-          <li class="item"><%= link_to 'Admin', "http://localhost:3000/admin" %></li>
-          <% end %>
           <li class="item"><%= link_to 'Search', new_search_path%></li>
           <li class="item"><%= link_to 'Sign out', destroy_user_session_path, :method => "delete"%></li>
         </ul>
