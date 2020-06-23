@@ -28,7 +28,7 @@ class EventDatesController < ApplicationController
 
     respond_to do |format|
       if @event_date.save
-        format.html { redirect_to @event_date, notice: 'Event date was successfully created.' }
+        format.html { redirect_back(fallback_location: root_path) }
         format.json { render :show, status: :created, location: @event_date }
       else
         format.html { render :new }
@@ -69,7 +69,7 @@ class EventDatesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_date_params
-      params.fetch(:event_date, {}).permit(:id, :user_id, :event_date,
+      params.fetch(:event_date, {}).permit(:id, :event_id, :date,
                                            event_date_vote_attributes: [:id, :user_id, :_destroy])
     end
 end
