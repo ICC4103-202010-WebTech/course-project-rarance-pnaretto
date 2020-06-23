@@ -20,7 +20,7 @@
     <%if user_signed_in? %>
       <aside>
         <ul class="columna-azul">
-          <li class="item"><%= link_to 'Profile', User.first %></li>
+          <li class="item"><%= link_to 'Profile', current_user %></li>
           <li class="item"><%= link_to 'Events', events_path %></li>
           <li class="item"><%= link_to 'Organizations', organizations_path %></li>
           <%if current_user.admin %>
