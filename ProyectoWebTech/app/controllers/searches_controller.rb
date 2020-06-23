@@ -3,7 +3,7 @@ class SearchesController < ApplicationController
     @search = Search.new
   end
   def create
-    @search= Search.create!(params[:search].permit(user_id,  :userName, :organization, :event, :eventUser, :eventOrganization))
+    @search= Search.create!(params[:search].permit(:user_id,  :userName, :organization, :event, :eventUser, :eventOrganization))
     redirect_to @search
   end
   def show

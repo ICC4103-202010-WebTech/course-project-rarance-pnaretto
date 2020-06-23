@@ -20,6 +20,13 @@ u2=User.create(name: 'Luigi' ,  email: 'Luigi@nintendo.com' , password:'Princess
 u3=User.create(name: 'Bowser' ,  email: 'Bowser@nintendo.com' , password:'conquer'  , location:'sunshine' , admin: false)
 u4=User.create(name: 'Waluigi' ,  email: 'WAAA@nintendo.com' , password:'TheBest'  , location:'NotSmash' , admin: false)
 
+
+u1.update_attributes(password: "PrincessPeach")
+u2.update_attributes(password:'PrincessDaisy')
+u3.update_attributes(password:'conquer')
+u4.update_attributes(password:'TheBest')
+
+
 e1=Event.create(title: 'Save Peach', ubication: 'Bowser castle', description: 'The title explains itself dude', public: true, decition: "Designed", min_vote: 1, start_voting: nil, finish_voting: nil, user:u1)
 e2=Event.create(title: 'Save Daisy', ubication: 'Other Bowser castle', description: 'The title explains itself dude', public: true, decition: "Designed", min_vote: 1, start_voting: nil, finish_voting: nil, user:u2)
 e3=Event.create(title: 'Cool fire show', ubication: 'Bowser castle backyard', description: 'The title explains itself dude', public: true, decition: "Designed", min_vote: 1, start_voting: nil, finish_voting: nil, user:u3)
