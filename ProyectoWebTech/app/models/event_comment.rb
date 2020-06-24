@@ -4,4 +4,5 @@ class EventComment < ApplicationRecord
   has_many :comment_comments , dependent: :destroy
   has_many :event_comment_reports , dependent: :delete_all
 
+  has_one_attached :image
 end

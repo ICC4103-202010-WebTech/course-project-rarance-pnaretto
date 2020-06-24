@@ -69,7 +69,6 @@ class CommentCommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def comment_comment_params
-      params.fetch(:comment_comment, {}).permit( :id, :title, :message, :description, :user_id, :event_comment_id ,:user, :event_comment,
-      event_dates_attributes: [:id, :date, :_destroy])
+      params.fetch(:comment_comment, {}).permit( :id, :message, :user_id, :event_comment_id , :image)
     end
 end
