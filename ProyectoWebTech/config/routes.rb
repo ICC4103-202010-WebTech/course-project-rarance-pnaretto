@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :events
   resources :searches
   resources :organizations
+  resources :organization_members
 
 
   resources :event_invitations do
