@@ -15,7 +15,7 @@
     <li>Owner: <%= @organization.user.name %></li>
     <li>Description: <%= @organization.description %></li>
     <%if current_user.id == @organization.user.id %>
-      <li><%= link_to 'Edit', edit_event_path(@event) %></li>
+      <li><%= link_to 'Edit', edit_organization_path(@organization) %></li>
     <% end %>
   </ul>
   <h1>Organization Events</h1>

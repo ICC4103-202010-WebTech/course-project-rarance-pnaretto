@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_23_060001) do
+ActiveRecord::Schema.define(version: 2020_06_24_072042) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,13 @@ ActiveRecord::Schema.define(version: 2020_06_23_060001) do
     t.integer "user_id"
     t.index ["event_comment_id"], name: "index_comment_comments_on_event_comment_id"
     t.index ["user_id"], name: "index_comment_comments_on_user_id"
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "recipient_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "date_notifications", force: :cascade do |t|
@@ -159,6 +166,16 @@ ActiveRecord::Schema.define(version: 2020_06_23_060001) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "msgs", force: :cascade do |t|
+    t.text "body"
+    t.integer "conversation_id"
+    t.integer "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["conversation_id"], name: "index_msgs_on_conversation_id"
+    t.index ["user_id"], name: "index_msgs_on_user_id"
+  end
+
   create_table "organization_events", force: :cascade do |t|
     t.boolean "public"
     t.datetime "created_at", precision: 6, null: false
@@ -232,26 +249,8 @@ ActiveRecord::Schema.define(version: 2020_06_23_060001) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password"
-    t.string "profile_photo"
-    t.string "location"
-    t.boolean "admin"
-    t.datetime "last_acces"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "last_sign_in_at"
-    t.string "provider"
-    t.string "uid"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
+# Could not dump table "users" because of following StandardError
+#   Unknown type 'inet' for column 'current_sign_in_ip'
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comment_comment_reports", "comment_comments"

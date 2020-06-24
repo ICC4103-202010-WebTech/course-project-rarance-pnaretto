@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.boolean :admin
       t.datetime :last_acces
 
+
       t.timestamps
     end
   end
