@@ -18,6 +18,25 @@
       <li><%= link_to 'Edit', edit_organization_path(@organization) %></li>
     <% end %>
   </ul>
+
+  <div class = "columna-blanca">
+    <h3>Organization members</h3>
+    <ul class="columna-blanca">
+      <% @organization.organization_members.each  do |member| %>
+        <il><%= member.user.name  %></il>
+      <% end %>
+    </ul>
+    <% $org = @organization.id %>
+    <%if current_user.id == @organization.user.id or current_user.admin%>
+      <div><%= link_to 'Invite more people', new_organization_member_path() %></div>
+    <% end %>
+  </div>
+  <h3>Organization members</h3>
+
+  <div>
+
+  </div>
+
   <h1>Organization Events</h1>
   <% @public_events.each do |org_event| %>
     <h2 class="columna-blanca"><%=Event.find(org_event.event_id).title %></h2>

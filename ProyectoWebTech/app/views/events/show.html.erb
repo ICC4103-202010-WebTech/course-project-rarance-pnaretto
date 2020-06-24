@@ -153,9 +153,8 @@
       <% end %>
     </table>
     <hr>
-    <%= link_to 'Back', events_path %>
   </div>
-  <dic class = "columna-blanca">
+  <div class = "columna-blanca">
     <h3>Invitations</h3>
     <ul class="columna-blanca">
       <% @event.event_invitations.each  do |invitation| %>
@@ -166,6 +165,6 @@
     <%if current_user.id == @event.user.id or current_user.admin%>
       <div><%= link_to 'Invite more people', new_event_invitation_path() %></div>
     <% end %>
-
-  </dic>
+  </div>
+  <%= link_to 'Back', events_path %>
 </div>
