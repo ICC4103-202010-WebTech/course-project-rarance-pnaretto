@@ -8,6 +8,7 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
+  <%= stylesheet_link_tag 'global', media:'all', 'data-turbolinks-track': 'reload' %>
 </head>
 <body>
 
@@ -28,47 +29,51 @@
     margin-right: -6px;
   }
 </style>
-<div class="list-group col-md-3">
-  <ul class="nav nav-pills nav-stacked">
-    <li><button type="button" class="list-group-item"
-                data-toggle="collapse" data-target="#mail"><h4>Conversations
-      <i class="glyphicon glyphicon-inbox"></i></h4></button></li>
-    <li><button type="button" class="list-group-item"
-                data-toggle="collapse" data-target="#new"><h4>New Message
-      <i class="glyphicon glyphicon-new-window" style="vertical-align:right;"></i></h4></button></li>
-  </ul>
-</div>
-<h1>My Inbox</h1>
-<div class="panel panel-default">
-  <div class="col-lg-6">
-    <div id="mail" class="collapse">
-      <h1 class="panel-heading">All Conversations:</h1>
-      <div class="panel-body">
-        <div class="item">
-          <% @conversations.each do |conversation| %>
-            <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-              <% if conversation.sender_id == current_user.id %>
-                <% recipient = User.find(conversation.recipient_id) %>
-              <% else %>
-                <% recipient = User.find(conversation.sender_id) %>
+
+
+<div class="columna-blanca">
+  <div class="columna-blanca">
+    <ul class="linea-blanca">
+      <li><button type="button" class="list-group-item"
+                  data-toggle="collapse" data-target="#mail"><h4>Conversations
+        <i class="glyphicon glyphicon-inbox"></i></h4></button></li>
+      <li><button type="button" class="list-group-item"
+                  data-toggle="collapse" data-target="#new"><h4>New Message
+        <i class="glyphicon glyphicon-new-window" style="vertical-align:right;"></i></h4></button></li>
+    </ul>
+  </div>
+  <h1>My Inbox</h1>
+  <div class="columna-blanca">
+    <div class="col-lg-6">
+      <div id="mail" class="collapse">
+        <h4 class="panel-heading">All Conversations:</h4>
+        <div class="panel-body">
+          <div class="item">
+            <% @conversations.each do |conversation| %>
+              <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+                <% if conversation.sender_id == current_user.id %>
+                  <% recipient = User.find(conversation.recipient_id) %>
+                <% else %>
+                  <% recipient = User.find(conversation.sender_id) %>
+                <% end %>
+                <h5><%= link_to recipient.name, conversation_msgs_path(conversation)%></h5>
               <% end %>
-              <h3><%= link_to recipient.email, conversation_msgs_path(conversation)%></h3>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div id="new" class="collapse">
+        <div class="panel-body">
+          <h4 class="panel-heading">All Users:</h4>
+          <% @users.each do |user| %>
+            <% if user.id != current_user.id %>
+              <div class="item"><h5>
+                <%= link_to user.name,
+                            new_conversation_path(sender_id: current_user.id, recipient_id: user.id), method: "post"%>
+              </h5></div>
             <% end %>
           <% end %>
         </div>
-      </div>
-    </div>
-    <div id="new" class="collapse">
-      <div class="panel-body">
-        <h1 class="panel-heading">All Users:</h1>
-        <% @users.each do |user| %>
-          <% if user.id != current_user.id %>
-            <div class="item"><h3>
-              <%= link_to user.email,
-                          new_conversation_path(sender_id: current_user.id, recipient_id: user.id), method: "post"%>
-            </h3></div>
-          <% end %>
-        <% end %>
       </div>
     </div>
   </div>

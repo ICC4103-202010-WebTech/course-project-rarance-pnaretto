@@ -12,7 +12,14 @@
     </div>
   <% end %>
 
-  <%= form.hidden_field :user_id, value: current_user.id %>
+  <% if current_user.admin or action_name == 'edit' %>
+    <div class="form-group">
+      <%= form.label :User %>
+      <%= form.collection_select :user_id, User.all, :id, :name, include_blank: true %>
+    </div>
+  <% elsif action_name == 'new'%>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  <% end %>
 
   <div class="form-group">
     <%= form.label :name %> <br/>
