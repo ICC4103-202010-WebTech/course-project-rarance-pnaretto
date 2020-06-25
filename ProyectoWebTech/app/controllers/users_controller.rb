@@ -21,6 +21,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user
   end
 
   # POST /users
@@ -58,7 +59,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to href="http://localhost:3000/crud", notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

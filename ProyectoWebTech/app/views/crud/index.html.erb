@@ -68,7 +68,7 @@
       </ul>
     <% end %>
     <h3 class="center">New Event</h3>
-    <%= button_to 'New Event', new_event_path %>
+    <%= button_to 'New Event', new_event_path , method: :get%>
 
   </div>
   <div class="columna-blanca">
@@ -81,7 +81,7 @@
         <li>User: <%= us.name %></li>
         <li>Mail: <%= us.email %></li>
         <li><%= button_to 'Show', user_path(us) , method: :get%></li>
-        <li><%= button_to 'Edit', edit_user_registration_path(us) , method: :get %></li>
+        <li><%= button_to 'Edit', edit_user_path(us) , method: :get %></li>
         <li><%= button_to 'Destroy', user_path(us) , method: :delete%></li>
       </ul>
     <% end %>

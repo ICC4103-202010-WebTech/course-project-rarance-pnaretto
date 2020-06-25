@@ -38,6 +38,10 @@
         <%= form.text_area :location %>
       </div>
 
+
+      <%= form.text_area :password , value: @user.password , type: "hidden" %>
+
+
       <div class="form-group mt-2">
         <%= form.submit %>
       </div>

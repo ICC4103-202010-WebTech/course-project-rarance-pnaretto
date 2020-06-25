@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   resources :comment_comment_reports, defaults: { format: :html }
   resources :comment_comments, defaults: { format: :html }
   resources :event_comments, defaults: { format: :html }
-  resources :organizations, defaults: { format: :html }
   resources :event_invitations, defaults: { format: :html }
   resources :events
   resources :searches
