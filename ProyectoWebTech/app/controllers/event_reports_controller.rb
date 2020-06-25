@@ -41,7 +41,7 @@ class EventReportsController < ApplicationController
   # PATCH/PUT /event_reports/1.json
   def update
     respond_to do |format|
-      if @event_report.update(event_report_params)
+      if @event_report.update(event_report_params) and @event_report.message > 0
         format.html { redirect_to @event_report, notice: 'Event report was successfully updated.' }
         format.json { render :show, status: :ok, location: @event_report }
       else
@@ -69,6 +69,6 @@ class EventReportsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_report_params
-      params.fetch(:event_report, {})
+      params.fetch(:event_report, {}).permit(:id, :event_id, :user_id, :message)
     end
 end
