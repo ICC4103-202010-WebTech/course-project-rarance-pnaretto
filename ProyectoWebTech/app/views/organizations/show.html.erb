@@ -14,7 +14,7 @@
   <ul class="columna-blanca">
     <li>Owner: <%= @organization.user.name %></li>
     <li>Description: <%= @organization.description %></li>
-    <%if current_user.id == @organization.user.id %>
+    <%if current_user.id == @organization.user.id or current_user.admin%>
       <li><%= link_to 'Edit', edit_organization_path(@organization) %></li>
     <% end %>
   </ul>
@@ -30,11 +30,6 @@
     <%if current_user.id == @organization.user.id or current_user.admin%>
       <div><%= link_to 'Invite more people', new_organization_member_path() %></div>
     <% end %>
-  </div>
-  <h3>Organization members</h3>
-
-  <div>
-
   </div>
 
   <h1>Organization Events</h1>
