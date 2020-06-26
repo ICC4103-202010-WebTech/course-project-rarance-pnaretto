@@ -9,23 +9,25 @@
   <div class="columna-blanca">
   <%= form_for @search do |f| %>
     <div class="field">
-      <%= f.label :userName %><br />
+      Search user by its name<br />
       <%= f.text_field :userName %>
     </div>
     <div class="field">
-      <%= f.label :organization %><br />
+      Search organization by its name<br />
       <%= f.text_field :organization %>
     </div>
+      <h4>Events</h4>
+      <h5>In this fields you will search events by different attributes<br>(combine them to make a more specific search!)</h5>
     <div class="field">
-      <%= f.label :event %><br />
+      Search event by its name or description<br />
       <%= f.text_field :event %>
     </div>
     <div class="field">
-      <%= f.label :eventUser %><br />
+      Search event by its User<br />
       <%= f.collection_select :eventUser, User.order(:name), :id, :name, include_blank: true %>
     </div>
     <div class="field">
-      <%= f.label :eventOrganization %><br />
+      Search event by organizations in which it is public<br />
       <%= f.text_field :eventOrganization %>
     </div>
     <div class="actions"><%= f.submit "Search" %></div>

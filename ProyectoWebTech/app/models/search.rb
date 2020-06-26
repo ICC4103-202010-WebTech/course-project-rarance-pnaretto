@@ -16,9 +16,9 @@ private
     events = events.where(user_id: eventUser).order(:name) if eventUser.present?
     #events = events.where(user_id: userName) if userName.present?
     #orga= Organization.joins(OrganizationEvent).where( name: eventOrganization)
-    num = Organization.where(name: eventOrganization).ids[0] if eventOrganization.present?
+    num = Organization.where('name LIKE ?', "%#{eventOrganization}%").ids[0] if eventOrganization.present?
     events = events.joins(organization_event: [:organization]).where(organizations: {id:num})if eventOrganization.present?
-    events= events.where('title LIKE ?', "%#{event}%") if event.present?
+    events= events.where('title LIKE ? OR description LIKE ?', "%#{event}% ", "%#{event}%") if event.present?
     events
   end
   def find_users
