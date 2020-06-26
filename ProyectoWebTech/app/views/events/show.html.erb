@@ -59,8 +59,6 @@
       <div><%= link_to 'Edit', edit_event_path(@event) %></div>
     <% end %>
 
-
-
     <div>
       <h3>Vote for date</h3>
       <div>
@@ -75,20 +73,6 @@
               </li>
             <% end %>
           <% end %>
-          <li>
-            <%if current_user.id == @event.user.id or current_user.admin%>
-              <%= form_for :event_date, :url => {:controller => "event_dates", :action => "create"} do |event_dates_form|%>
-
-                <%= event_dates_form.text_field :event_id, value: @event.id, type: "hidden" %>
-
-                <div class="form-group">
-                  <%= event_dates_form.label :date %><br />
-                  <%= event_dates_form.datetime_local_field :date, class: "form-control" %>
-                  <%= event_dates_form.submit('Add') %>
-                </div>
-              <% end %>
-            <%end %>
-          </li>
         </ul>
       </div>
     </div>
@@ -228,7 +212,7 @@
     <h3>Invitations</h3>
     <ul class="columna-blanca">
       <% @event.event_invitations.each  do |invitation| %>
-        <il><%= invitation.user.name  %></il>
+        <il><%= link_to invitation.user.name, invitation.user %></il>
       <% end %>
     </ul>
     <% $ev = @event.id %>
@@ -236,5 +220,18 @@
       <div><%= link_to 'Invite more people', new_event_invitation_path() %></div>
     <% end %>
   </div>
+
+      <div>
+        <h3>Organizations</h3>
+        <ul class="columna-blanca">
+          <% Organization.where(id: OrganizationEvent.where(event_id: @event.id)).each  do |organization| %>
+            <il><%= link_to organization.name, organization %></il>
+          <% end %>
+        </ul>
+        <% $ev = @event.id %>
+        <%if current_user.id == @event.user.id or current_user.admin%>
+          <div><%= link_to 'Invite more people', new_organization_event_path() %></div>
+        <% end %>
+      </div>
   <%= link_to 'Back', events_path %>
 </div>
