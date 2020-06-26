@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <%= form.hidden_field :event_id, value: 1 %>
+  <%= form.hidden_field :event_id, value: $ev %>
   <div class="field">
     <%= form.label :organization_id %><br />
     <%= form.collection_select :organization_id, Organization.where(id: OrganizationMember.where(user_id: 1).select(:organization_id)), :id, :name, include_blank: true %>
