@@ -26,7 +26,7 @@ UPR: User profile (10%)
 
 `View user profile.`Status: works perfectly
 
-`Edit user profile.`Status: works perfectly (it has two edition fields, one for the attributes and other for the sign up properties)
+`Edit user profile.`Status: works perfectly (it has two edition fields, one for the attributes and other for the sign up properties, after you edit the user you have to re-log in)
 
 `Edit user fields: name, bio, location.`Status: works perfectly
 
@@ -48,9 +48,9 @@ EV: Events (25%)
 
 `View title, description, location, and creation date.`Status: works perfectly
 
-`View images.`Status: works perfectly
+`View images.`Status: works perfectly, you can upload lolein gifs and they look awesome
 
-`View file attachments. / View videos.`Status: you can upload files in the messages but it cannto be shown
+`View file attachments. / View videos.`Status: partially achieved: you can upload files and videos in the messages but it cannot be shown
 
 `Start event date vote.` Status: works perfectly
 
@@ -90,17 +90,17 @@ UAD: User Administration (10%)
 
 `View user details.`Status: works perfectly
 
-`i. Last access. ii. User role.`Status: works perfectly, only exists, one user that is admin of the page, MARIO, pass and email above)
+`i. Last access. ii. User role.`Status: works perfectly, only exists, one user that is admin of the page, MARIO, pass and email above in ADM bullet)
 
-`Edit User.`Status: works perfectly 
+`Edit User.`Status: works perfectly only on your own account!(it has no meaning in edit other user, as an admin you can delete him or warn him, but not modify his personal information)
 
-`i. Change password.`Status: works perfectly
+`i. Change password.`Status: works perfectly only on your own account!(it has no meaning in edit other user, as an admin you can delete him or warn him, but not modify his personal information)
 
 `Delete user.`Status: works perfectly
 
 AUP: Acceptable Use Policy (AUP) and Terms of Service (ToS). (5%)
 
-`Provide AUP and ToS documents.`
+`Provide AUP and ToS documents.`Status: works perfectly
 
 `Report abusive content.` Status: works perfectly
 
