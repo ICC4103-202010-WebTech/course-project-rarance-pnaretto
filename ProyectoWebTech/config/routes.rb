@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   resources :organizations
   resources :event_reports
   resources :organization_events
+  resources :event_comment_reports
+  resources :comment_comment_reports
+
 
   resources :conversations do
     resources :msgs
