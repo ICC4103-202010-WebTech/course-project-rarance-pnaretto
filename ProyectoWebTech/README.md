@@ -8,6 +8,8 @@ IMPORTANT
 
 `To do the crud opreations is needed to acces to "ADMIN" and then click on the button of system management`
 
+`Due to active storage functioning we could not add images on the seed, to actually show that it works it must be uploaded by the user manually`
+
 `We hope that you enjoy our page!`
 
 RUBRIC for ASSIGNMENT 4
