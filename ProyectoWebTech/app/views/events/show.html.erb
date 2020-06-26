@@ -191,14 +191,18 @@
             <tr class="form-group">
               <td></td>
               <td>
-                <%= comment_comment_form.label :message %>
+                <button type="button" class="list-group-item" style="width:110px;height:50px;"
+                        data-toggle="collapse" data-target="#<%=String(comment.user.name)+String(comment.id)+"m" %>"><h7>Reply!<br />
+                  <i class="glyphicon glyphicon-inbox"></i></h7></button>
               </td>
               <td>
+                <div id=<%=String(comment.user.name)+String(comment.id)+"m" %> class="collapse">
+                <%= comment_comment_form.label :message %>
                 <%= comment_comment_form.text_field :message, class: "form-control" %>
-
                 <%= comment_comment_form.label :image %>
                 <%= comment_comment_form.file_field :image, class: "form-control" %>
                 <%= comment_comment_form.submit("Reply") %>
+                </div>
               </td>
             </tr>
           <% end %>
@@ -211,14 +215,23 @@
         <%= comment_form.text_field :event_id, value: @event.id, type: "hidden" %>
 
         <tr class="form-group">
-          <td><%= comment_form.label :message %></td>
           <td>
+            <button type="button" class="list-group-item" style="width:110px;height:50px;"
+                    data-toggle="collapse" data-target="#m" ><h7>Comment!<br />
+              <i class="glyphicon glyphicon-inbox"></i></h7></button>
+          </td>
+          <td>
+            <div id="m"  class="collapse">
+            <%= comment_form.label :message %>
             <%= comment_form.text_field :message, class: "form-control" %>
 
             <%= comment_form.label :image %>
             <%= comment_form.file_field :image, class: "form-control" %>
+            <%= comment_form.submit("Comment") %>
+            </div>
           </td>
-          <td><%= comment_form.submit("Comment") %></td>
+
+          <td></td>
         </tr>
       <% end %>
     </table>
