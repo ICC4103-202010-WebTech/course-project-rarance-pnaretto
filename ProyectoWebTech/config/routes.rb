@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   resources :searches
   resources :organizations
   resources :event_reports
+  resources :event_comment_reports
+  resources :comment_comment_reports
 
   resources :conversations do
     resources :msgs
