@@ -31,6 +31,7 @@ class OrganizationsController < ApplicationController
     @organization = Organization.new(organization_params)
     respond_to do |format|
       if @organization.save
+        a = OrganizationMember.create(user: @organization.user, organization: @organization)
         format.html { redirect_to @organization, notice: 'Organization was successfully created.' }
         format.json { render :show, status: :created, location: @organization }
       else
@@ -73,7 +74,8 @@ class OrganizationsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def organization_params
 
-      params.fetch(:organization, {}).permit( :id, :name, :description, :user_id)  #:organization_banner_photo
+      params.fetch(:organization, {}).permit( :id, :name, :description, :user_id,
+                                              organization_member_attributes: [:id, :user_id, :_destroy])  #:organization_banner_photo
 
     end
 end

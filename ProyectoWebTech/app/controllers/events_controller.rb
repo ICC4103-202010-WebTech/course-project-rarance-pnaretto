@@ -34,6 +34,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
+        a = EventInvitation.create(event: @event, user: @event.user)
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
@@ -82,6 +83,6 @@ class EventsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def event_params
       params.fetch(:event, {}).permit( :id, :title, :ubication, :description, :public, :decition, :min_vote, :start_voting, :finish_voting, :user_id, :event_dates_id , :event_banner_photo, event_file: [],
-                                       event_dates_attributes: [:id, :date, :_destroy], event_date_vote_attributes:[:id, :user_id, :event_date_id])
+                                       event_dates_attributes: [:id, :date, :_destroy], event_date_vote_attributes:[:id, :user_id, :event_date_id, :_destroy])
     end
 end
