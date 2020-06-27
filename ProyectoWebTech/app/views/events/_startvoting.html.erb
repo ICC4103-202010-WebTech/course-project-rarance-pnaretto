@@ -19,11 +19,6 @@
       <%= form.datetime_local_field :finish_voting, class: "form-control" %>
     </div>
 
-    <div class="form-group">
-      <%= form.label :finish_voting_date %><br />
-      <%= form.datetime_local_field :finish_voting, class: "form-control" %>
-    </div>
-
     <%if @event.decition == 1 %>
       <div class="form-group">
         <%= form.label :min_vote %><br />

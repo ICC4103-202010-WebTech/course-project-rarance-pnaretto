@@ -60,7 +60,31 @@
     <% end %>
 
     <%if @event.start_voting == nil %>
+      <div>
+        <ul class="columna-blanca">
+          <% @event.event_dates.each  do |event_date| %>
+            <p><%= event_date.date %></p>
+          <% end %>
+        </ul>
+      </div>
+      <%if current_user.admin or current_user.id == @event.user.id %>
+        <div>
+          <%= form_for :event_date, :url => {:controller => "event_dates", :action => "create"} do |event_dates_form|%>
+            <%= event_dates_form.datetime_local_field :event_id, value: @event.id, type: 'hidden' %>
+
+            <div class="form-group">
+              <%= event_dates_form.label :new_date %><br />
+              <%= event_dates_form.datetime_local_field :date, class: "form-control" %>
+            </div>
+
+            <div class="actions">
+              <%= event_dates_form.submit('New date') %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
       <%= render 'startvoting', event: @event %>
+
     <% end %>
 
     <%if @event.start_voting != nil %>
