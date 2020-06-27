@@ -1,0 +1,27 @@
+<div class="row ml-0">
+  <%= form_with(model: event, local: true) do |form| %>
+    <% if event.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(event.errors.count, "error") %> prohibited this event_file from being saved:</h2>
+
+        <ul>
+          <% event.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= form_for :event_date, :url => {:controller => "event_dates", :action => "create"} do |event_dates_form|%>
+      <%= event_dates_form.datetime_local_field :event_id, value: @event.id, type: 'hidden' %>
+
+      <div class="form-group">
+        <%= event_dates_form.label :date %><br />
+        <%= event_dates_form.datetime_local_field :date, class: "form-control" %>
+      </div>
+
+      <div class="actions">
+        <%= event_dates_form.submit('New date') %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

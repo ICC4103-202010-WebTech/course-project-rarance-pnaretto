@@ -24,8 +24,7 @@ class EventDatesController < ApplicationController
   # POST /event_dates
   # POST /event_dates.json
   def create
-    @event_date = EventDate.new(event_date_params.permit(:id, :user_id, :event_date))
-
+    @event_date = EventDate.new(event_date_params)
     respond_to do |format|
       if @event_date.save
         format.html { redirect_back(fallback_location: root_path) }
@@ -42,7 +41,7 @@ class EventDatesController < ApplicationController
   def update
     respond_to do |format|
       if @event_date.update(event_date_params)
-        format.html { redirect_to @event_date, notice: 'Event date was successfully updated.' }
+        format.html { redirect_back(fallback_location: root_path) }
         format.json { render :show, status: :ok, location: @event_date }
       else
         format.html { render :edit }
@@ -69,7 +68,6 @@ class EventDatesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_date_params
-      params.fetch(:event_date, {}).permit(:id, :event_id, :date,
-                                           event_date_vote_attributes: [:id, :user_id, :_destroy])
+      params.fetch(:event_date, {}).permit(:id, :event_id, :date)
     end
 end

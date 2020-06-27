@@ -24,11 +24,11 @@ class EventDateVotesController < ApplicationController
   # POST /event_date_votes
   # POST /event_date_votes.json
   def create
-    @event_date_vote = EventDateVote.new(event_date_vote_params.permit(:id, :user_id, :event_date_id))
+    @event_date_vote = EventDateVote.new(event_date_vote_params)
 
     respond_to do |format|
       if @event_date_vote.save
-        format.html { redirect_to @event_date_vote, notice: 'Event date vote was successfully created.' }
+        format.html { redirect_back(fallback_location: root_path)}
         format.json { render :show, status: :created, location: @event_date_vote }
       else
         format.html { render :new }

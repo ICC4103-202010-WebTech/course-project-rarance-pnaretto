@@ -1,0 +1,39 @@
+<div class="row ml-0">
+  <%= form_with(model: event, local: true) do |form| %>
+    <% if event.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(event.errors.count, "error") %> prohibited this event_file from being saved:</h2>
+
+        <ul>
+          <% event.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+      <%= form.datetime_local_field :start_voting, value: DateTime.now, type: 'hidden' %>
+
+    <div class="form-group">
+      <%= form.label :finish_voting_date %><br />
+      <%= form.datetime_local_field :finish_voting, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :finish_voting_date %><br />
+      <%= form.datetime_local_field :finish_voting, class: "form-control" %>
+    </div>
+
+    <%if @event.decition == 1 %>
+      <div class="form-group">
+        <%= form.label :min_vote %><br />
+        <%= form.datetime_local_field :min_vote, class: "form-control" %>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <%= form.submit('Start votation') %>
+
+    </div>
+  <% end %>
+</div>

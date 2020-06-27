@@ -59,23 +59,46 @@
       <div><%= link_to 'Edit', edit_event_path(@event) %></div>
     <% end %>
 
-    <div>
-      <h3>Vote for date</h3>
-      <div>
-        <ul>
-          <% @event.event_dates.each  do |event_date| %>
-            <%= form_for :event_date_vote, :url => {:controller => "event_date_votes", :action => "create"} do |event_date_votes_form|%>
+    <%if @event.start_voting == nil %>
+      <%= render 'startvoting', event: @event %>
+    <% end %>
 
-              <%= event_date_votes_form.text_field :user_id, value: current_user.id, type: "hidden" %>
-              <%= event_date_votes_form.text_field :event_date_id, value: event_date.id, type: "hidden" %>
-              <li class="form-group">
-                <%= event_date_votes_form.submit(event_date.date) %>
-              </li>
+    <%if @event.start_voting != nil %>
+      <div>
+        <h3>Vote for date</h3>
+        <div>
+          <ul class="columna-blanca">
+            <% @event.event_dates.each  do |event_date| %>
+              <%= form_for :event_date_vote, :url => {:controller => "event_date_votes", :action => "create"} do |event_date_votes_form|%>
+
+                <%= event_date_votes_form.text_field :user_id, value: current_user.id, type: "hidden" %>
+                <%= event_date_votes_form.text_field :event_date_id, value: event_date.id, type: "hidden" %>
+                <li class="form-group">
+                  <%= event_date_votes_form.submit(event_date.date) %>
+                  <%= EventDateVote.where(event_date_id: event_date.id).count() %>
+                </li>
+              <% end %>
             <% end %>
-          <% end %>
-        </ul>
+          </ul>
+        </div>
+        <%if current_user.admin or current_user.id == @event.user.id %>
+          <div>
+            <%= form_for :event_date, :url => {:controller => "event_dates", :action => "create"} do |event_dates_form|%>
+              <%= event_dates_form.datetime_local_field :event_id, value: @event.id, type: 'hidden' %>
+
+              <div class="form-group">
+                <%= event_dates_form.label :new_date %><br />
+                <%= event_dates_form.datetime_local_field :date, class: "form-control" %>
+              </div>
+
+              <div class="actions">
+                <%= event_dates_form.submit('New date') %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
       </div>
-    </div>
+    <% end %>
 
     <h1>Event Files</h1>
     <div>
