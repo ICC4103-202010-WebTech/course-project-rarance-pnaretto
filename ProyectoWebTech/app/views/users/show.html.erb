@@ -18,6 +18,8 @@
       </ul>
   </div>
 
-<%= link_to 'Edit', edit_user_registration_path %>
-<%= link_to 'Back', root_path %>
+  <%if current_user.admin or current_user.id == @user.id %>
+    <%= link_to 'Edit', edit_user_registration_path %>
+  <% end %>
+  <%= link_to 'Back', root_path %>
 </div>

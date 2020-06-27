@@ -183,6 +183,7 @@
             <td></td>
             <td><%= commentco.user.name%></td>
             <td >
+              <div class="columna-blanca"
               <li><%= commentco.message %> </li>
               <li><div id=<%=String(commentco.user.name)+String(commentco.id)+"cc" %> class="collapse"><br>Write your reasons to report:
                 <%= form_for :comment_comment_report, :url => {:controller => "comment_comment_reports", :action => "create"} do |f|%>
@@ -203,6 +204,7 @@
                   <%= image_tag(url_for(commentco.image),wide: "100",height: "100") %>
                 <% end %>
               </li>
+              </div>
             </td>
             <td><button type="button" class="list-group-item" style="width:90px;height:50px;"
                         data-toggle="collapse" data-target="#<%=String(commentco.user.name)+String(commentco.id)+"cc" %>"><h4><%= image_tag("Report.jpg",width: '60px') %><br />
