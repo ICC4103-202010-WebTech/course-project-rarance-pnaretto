@@ -62,7 +62,7 @@ EV: Events (25%)
 
 `Delete event.`Status: works perfectly
 
-`Edit event. / Add comment. / View comments. / Report event as inappropriate.`Status: works perfectly, you can even report users for innapropiate behaviour
+`Edit event. / Add comment. / View comments. / Report event as inappropriate.`Status: works perfectly, you can even report organizations for innapropiate behaviour
 
 SER: Search (10%)
 

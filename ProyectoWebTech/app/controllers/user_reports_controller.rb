@@ -28,7 +28,7 @@ class UserReportsController < ApplicationController
 
     respond_to do |format|
       if @user_report.save
-        format.html { redirect_to @user_report, notice: 'User report was successfully created.' }
+        format.html { redirect_back(fallback_location: root_path) }
         format.json { render :show, status: :created, location: @user_report }
       else
         format.html { render :new }

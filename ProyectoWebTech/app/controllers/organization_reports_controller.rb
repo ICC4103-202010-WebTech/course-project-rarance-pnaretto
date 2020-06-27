@@ -28,7 +28,7 @@ class OrganizationReportsController < ApplicationController
 
     respond_to do |format|
       if @organization_report.save
-        format.html { redirect_to @organization_report, notice: 'Organization report was successfully created.' }
+        format.html { redirect_back(fallback_location: root_path) }
         format.json { render :show, status: :created, location: @organization_report }
       else
         format.html { render :new }
@@ -69,6 +69,6 @@ class OrganizationReportsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def organization_report_params
-      params.fetch(:organization_report, {})
+      params.fetch(:organization_report, {}).permit(:id, :organization_id, :user_id, :message)
     end
 end

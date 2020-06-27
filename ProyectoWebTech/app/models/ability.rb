@@ -12,9 +12,11 @@ class Ability
 
       else
         can :manage, Event, user_id: user.id
-        can :manage, Organization, id: user.id
+        can :manage, Organization, user_id: user.id
         can :read, Event
-
+        can :read, Organization
+        can :read, User
+        can :manage, User, id: user.id
       end
 
     end

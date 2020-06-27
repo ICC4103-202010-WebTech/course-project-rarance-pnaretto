@@ -28,7 +28,7 @@ class EventReportsController < ApplicationController
 
     respond_to do |format|
       if @event_report.save
-        format.html { redirect_to @event_report, notice: 'Event report was successfully created.' }
+        format.html { redirect_back(fallback_location: root_path) }
         format.json { render :show, status: :created, location: @event_report }
       else
         format.html { render :new }
