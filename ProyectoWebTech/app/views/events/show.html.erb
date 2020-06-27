@@ -62,13 +62,17 @@
     <%if @event.start_voting == nil %>
       <div>
         <ul class="columna-blanca">
+          <h3>Event Dates</h3>
           <% @event.event_dates.each  do |event_date| %>
             <p><%= event_date.date %></p>
           <% end %>
         </ul>
       </div>
       <%if current_user.admin or current_user.id == @event.user.id %>
-        <div>
+        <button type="button" class="list-group-item" style="width:200px;height:50px;"
+                data-toggle="collapse" data-target="#new_date"><p>Add new date</p></button>
+        <div id="new_date" class="collapse" >
+          <br/>
           <%= form_for :event_date, :url => {:controller => "event_dates", :action => "create"} do |event_dates_form|%>
             <%= event_dates_form.datetime_local_field :event_id, value: @event.id, type: 'hidden' %>
 
@@ -83,7 +87,12 @@
           <% end %>
         </div>
       <% end %>
-      <%= render 'startvoting', event: @event %>
+      <br/>
+      <button type="button" class="list-group-item" style="width:200px;height:50px;"
+              data-toggle="collapse" data-target="#Start_voting"><p>Start voting</p></button>
+      <div id="Start_voting" class="collapse" >
+        <%= render 'startvoting', event: @event %>
+      </div>
 
     <% end %>
 
@@ -106,7 +115,9 @@
           </ul>
         </div>
         <%if current_user.admin or current_user.id == @event.user.id %>
-          <div>
+          <button type="button" class="list-group-item" style="width:200px;height:50px;"
+                  data-toggle="collapse" data-target="#new_date"><p>Add new date</p></button>
+          <div id="new_date" class="collapse" >
             <%= form_for :event_date, :url => {:controller => "event_dates", :action => "create"} do |event_dates_form|%>
               <%= event_dates_form.datetime_local_field :event_id, value: @event.id, type: 'hidden' %>
 
